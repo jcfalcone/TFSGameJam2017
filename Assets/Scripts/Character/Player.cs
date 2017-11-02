@@ -74,7 +74,7 @@ public class Player : BaseCharacter
         this.axisX = 0;
         this.axisY = 0;
 
-        this.currentAnimation = (int)Animations.Idle;
+        
         if (this.isMovable)
         {
             if (Input.GetKey(KeyCode.W) && this.canFloat)
@@ -97,6 +97,8 @@ public class Player : BaseCharacter
                 this.currentAnimation = (int)Animations.Walk;
                 this.isFacingRight = false;
             }
+
+            if(!Input.anyKey) this.currentAnimation = (int)Animations.Idle;
         }
 
 
