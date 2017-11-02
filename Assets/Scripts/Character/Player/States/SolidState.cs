@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SolidState : TemplateState 
+public class SolidState : PlayerStateTemplate 
 {
     public SolidState()
     {

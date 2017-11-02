@@ -5,6 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyStateManager : StateManagerTemplate
 {
+
+    [SerializeField]
+    protected List<TemplateState> states = new List<TemplateState>();
+
     [SerializeField]
     TemplateState.StatesAI currState;
 
@@ -23,11 +27,15 @@ public class EnemyStateManager : StateManagerTemplate
 		
     }
 
+    override public void Start()
+    {
+    }
+
     override public void Tick()
     {
         this.CheckState();
 
-        if(this.currState != TemplateState.States.Invalid)
+        if(this.currState != TemplateState.StatesAI.Invalid)
         {
             this.states[(int)this.currState].Tick();
         }
@@ -37,7 +45,7 @@ public class EnemyStateManager : StateManagerTemplate
     {
         this.CheckState();
 
-        if(this.currState != TemplateState.States.Invalid)
+        if(this.currState != TemplateState.StatesAI.Invalid)
         {
             this.states[(int)this.currState].FixedTick();
         }
@@ -45,7 +53,7 @@ public class EnemyStateManager : StateManagerTemplate
 
     void CheckState()
     {
-        if (this.desireState == TemplateState.States.Invalid)
+        if (this.desireState == TemplateState.StatesAI.Invalid)
         {
             return;
         }
@@ -55,7 +63,7 @@ public class EnemyStateManager : StateManagerTemplate
             return;
         }
 
-        if (this.currState != TemplateState.States.Invalid)
+        if (this.currState != TemplateState.StatesAI.Invalid)
         {
             this.states[(int)this.currState].End();
         }
@@ -63,10 +71,10 @@ public class EnemyStateManager : StateManagerTemplate
         this.states[(int)this.desireState].Start();
 
         this.currState = this.desireState;
-        this.desireState = TemplateState.States.Invalid;
+        this.desireState = TemplateState.StatesAI.Invalid;
     }
 
-    public void SetState(TemplateState.States _State)
+    public void SetState(TemplateState.StatesAI _State)
     {
         if (this.currState == _State)
         {

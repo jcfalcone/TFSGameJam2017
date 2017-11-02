@@ -5,11 +5,15 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerStateManager : StateManagerTemplate
 {
-    [SerializeField]
-    TemplateState.States currState;
 
     [SerializeField]
-    TemplateState.States desireState;
+    protected List<PlayerStateTemplate> states = new List<PlayerStateTemplate>();
+
+    [SerializeField]
+    PlayerStateTemplate.States currState;
+
+    [SerializeField]
+    PlayerStateTemplate.States desireState;
 
     Player parent;
 
@@ -24,8 +28,8 @@ public class PlayerStateManager : StateManagerTemplate
     {
         this.parent = _parent;
 
-        this.currState = TemplateState.States.Invalid;
-        this.desireState = TemplateState.States.Invalid;
+        this.currState = PlayerStateTemplate.States.Invalid;
+        this.desireState = PlayerStateTemplate.States.Invalid;
 
         for (int count = 0; count < this.states.Count; count++)
         {
@@ -41,7 +45,7 @@ public class PlayerStateManager : StateManagerTemplate
     {
         this.CheckState();
 
-        if(this.currState != TemplateState.States.Invalid)
+        if(this.currState != PlayerStateTemplate.States.Invalid)
         {
             this.states[(int)this.currState].Tick();
         }
@@ -53,7 +57,7 @@ public class PlayerStateManager : StateManagerTemplate
     {
         this.CheckState();
 
-        if(this.currState != TemplateState.States.Invalid)
+        if(this.currState != PlayerStateTemplate.States.Invalid)
         {
             this.states[(int)this.currState].FixedTick();
         }
@@ -61,7 +65,7 @@ public class PlayerStateManager : StateManagerTemplate
 
     void CheckState()
     {
-        if (this.desireState == TemplateState.States.Invalid)
+        if (this.desireState == PlayerStateTemplate.States.Invalid)
         {
             return;
         }
@@ -71,7 +75,7 @@ public class PlayerStateManager : StateManagerTemplate
             return;
         }
 
-        if (this.currState != TemplateState.States.Invalid)
+        if (this.currState != PlayerStateTemplate.States.Invalid)
         {
             this.states[(int)this.currState].End();
         }
@@ -79,7 +83,7 @@ public class PlayerStateManager : StateManagerTemplate
         this.states[(int)this.desireState].Start();
 
         this.currState = this.desireState;
-        this.desireState = TemplateState.States.Invalid;
+        this.desireState = PlayerStateTemplate.States.Invalid;
 
         this.parent.SetIsMovable(this.isMovable());
         this.parent.SetupAnimator(this.GetAnimator());
@@ -88,7 +92,7 @@ public class PlayerStateManager : StateManagerTemplate
         this.parent.SetMovePseed(this.GetSpeed());
     }
 
-    public void SetState(TemplateState.States _State)
+    public void SetState(PlayerStateTemplate.States _State)
     {
         if (this.currState == _State)
         {
@@ -100,7 +104,7 @@ public class PlayerStateManager : StateManagerTemplate
 
     public float GetSpeed()
     {
-        if (this.currState == TemplateState.States.Invalid)
+        if (this.currState == PlayerStateTemplate.States.Invalid)
         {
             return -1f;
         }
@@ -110,7 +114,7 @@ public class PlayerStateManager : StateManagerTemplate
 
     public Animator GetAnimator()
     {
-        if (this.currState == TemplateState.States.Invalid)
+        if (this.currState == PlayerStateTemplate.States.Invalid)
         {
             return null;
         }
@@ -120,7 +124,7 @@ public class PlayerStateManager : StateManagerTemplate
 
     public bool isMovable()
     {
-        if (this.currState == TemplateState.States.Invalid)
+        if (this.currState == PlayerStateTemplate.States.Invalid)
         {
             return false;
         }
@@ -130,7 +134,7 @@ public class PlayerStateManager : StateManagerTemplate
 
     public float GetStaminaRecover()
     {
-        if (this.currState == TemplateState.States.Invalid)
+        if (this.currState == PlayerStateTemplate.States.Invalid)
         {
             return -1f;
         }
@@ -140,7 +144,7 @@ public class PlayerStateManager : StateManagerTemplate
 
     public float GetStaminaBurn()
     {
-        if (this.currState == TemplateState.States.Invalid)
+        if (this.currState == PlayerStateTemplate.States.Invalid)
         {
             return -1f;
         }

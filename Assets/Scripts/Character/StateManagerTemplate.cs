@@ -6,9 +6,6 @@ using UnityEngine;
 public abstract class StateManagerTemplate
 {
 
-    [SerializeField]
-    protected List<TemplateState> states = new List<TemplateState>();
-
     public StateManagerTemplate()
     {
     }

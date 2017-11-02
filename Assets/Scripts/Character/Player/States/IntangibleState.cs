@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IntangibleState : TemplateState 
+public class IntangibleState : PlayerStateTemplate 
 {
     public IntangibleState()
     {

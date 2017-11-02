@@ -43,7 +43,7 @@ public class Player : BaseCharacter
         if (this.gravityForce <= 0.0f) this.gravityForce = 100.0f;
         if (this.turnRate <= 0.0f) this.turnRate = 10.0f;
 
-        this.stateManager.SetState(TemplateState.States.Default);
+        this.stateManager.SetState(PlayerStateTemplate.States.Default);
         
         this.isDead = false;
         this.isMovable = true;
@@ -106,15 +106,15 @@ public class Player : BaseCharacter
         
         if (Input.GetMouseButton(0))
         {
-            this.stateManager.SetState(TemplateState.States.Intangible);
+            this.stateManager.SetState(PlayerStateTemplate.States.Intangible);
         }
         else if(Input.GetMouseButton(1))
         {
-            this.stateManager.SetState(TemplateState.States.Solid);
+            this.stateManager.SetState(PlayerStateTemplate.States.Solid);
         }
         else
         {
-            this.stateManager.SetState(TemplateState.States.Default);
+            this.stateManager.SetState(PlayerStateTemplate.States.Default);
         }
 
         FlipMesh();
