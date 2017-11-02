@@ -4,49 +4,63 @@ using UnityEngine;
 
 public class Player : BaseCharacter
 {
+    [SerializeField] PlayerStateManager stateManager = new PlayerStateManager();
+
     [SerializeField] Transform spawnPoint;
+    [SerializeField] Transform mesh;
 
     [SerializeField] [Range(50, 150)] float gravityForce;
-    [SerializeField] [Range(100, 500)] float upForce;
     [SerializeField] [Range(100, 500)] float moveSpeed;
+    [SerializeField] float turnRate;
 
     bool isMovable;
     bool isFacingRight;
+    bool canFloat;
 
     int axisX;
     int axisY;
+
+    [SerializeField] float staminaBurnRate;
+    [SerializeField] float staminaRecoverRate;
 
     enum Animations : int
     {
         Idle,
         Walk,
-        Rigid
+        Dead
     }
     int currentAnimation;
 
     void Start ()
     {
+        this.stateManager.Init(this);
+
         SetupRigidbody();
 
         transform.position = spawnPoint.position;
 
         if (this.gravityForce <= 0.0f) this.gravityForce = 100.0f;
-        if (this.upForce <= 0.0f) this.upForce = 250.0f;
-        if (this.moveSpeed <= 0.0f) this.moveSpeed = 250.0f;
+        if (this.turnRate <= 0.0f) this.turnRate = 10.0f;
 
+        this.stateManager.SetState(TemplateState.States.Default);
+        
         this.isDead = false;
         this.isMovable = true;
         this.isFacingRight = true;
+        this.canFloat = true;
+
+        this.stamina = 100.0f;
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
-        if (!isMovable || isDead) return;
+        if (!this.isMovable || this.isDead) return;
         
         CheckInput();
 
-        rb.velocity = ((transform.forward * axisX) + (transform.up * axisY)) * this.moveSpeed * Time.deltaTime;
+        this.stateManager.Tick();
+
+        rb.velocity = ((transform.forward * this.axisX) + (transform.up * this.axisY)) * this.moveSpeed * Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -56,33 +70,87 @@ public class Player : BaseCharacter
 
     void CheckInput()
     {
-        axisX = 0;
-        axisY = 0;
+        this.axisX = 0;
+        this.axisY = 0;
 
-        currentAnimation = (int)Animations.Idle;
-
-        if (Input.GetKey(KeyCode.W))
+        this.currentAnimation = (int)Animations.Idle;
+        if (Input.GetKey(KeyCode.W) && this.canFloat)
         {
-            axisY = 1;
-            currentAnimation = (int)Animations.Walk;
+            this.axisY = 1;
+            this.currentAnimation = (int)Animations.Walk;
+            SpendStamina();
         }
 
         if (Input.GetKey(KeyCode.D))
         {
-            axisX = 1;
-            currentAnimation = (int)Animations.Walk;
-            isFacingRight = true;
+            this.axisX = 1;
+            this.currentAnimation = (int)Animations.Walk;
+            this.isFacingRight = true;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
-            axisX = -1;
-            currentAnimation = (int)Animations.Walk;
-            isFacingRight = false;
+            this.axisX = -1;
+            this.currentAnimation = (int)Animations.Walk;
+            this.isFacingRight = false;
         }
+
+
+        /* CHANGE STATES FOR PLAYER */
+        this.stateManager.SetState(TemplateState.States.Default);
+        if (Input.GetMouseButtonDown(0))
+        {
+            this.stateManager.SetState(TemplateState.States.Intangible);
+        }
+        else if(Input.GetMouseButtonDown(1))
+        {
+            this.stateManager.SetState(TemplateState.States.Solid);
+        }
+
+        FlipMesh();
+
+        if (anim)
+            anim.SetInteger("State", currentAnimation);
     }
 
     public void SetIsMovable( bool condition ) { this.isMovable = condition; }
 
     public void SetupAnimator( Animator newAnim ) { this.anim = newAnim; }
+
+    void FlipMesh()
+    {
+        if(!isFacingRight)
+        {
+            mesh.localRotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+        }
+        else
+        {
+            mesh.localRotation = Quaternion.identity;
+        }
+    }
+
+    public void SpendStamina()
+    {
+        this.stamina -= this.staminaBurnRate;
+
+        if(this.stamina <= 0.0f)
+        {
+            this.stamina = 0.0f;
+            this.canFloat = false;
+        }
+    }
+
+    public void RecoverStamina()
+    {
+        this.stamina += this.staminaRecoverRate;
+
+        if(this.stamina >= 100.0f)
+        {
+            this.stamina = 100.0f;
+            this.canFloat = true;
+        }
+    }
+
+    public void SetMovePseed( float newMoveSpeed ) { this.moveSpeed = newMoveSpeed; }
+    public void SetStaminaBurnRate( float newBurnRate ) { this.staminaBurnRate = newBurnRate; }
 }
