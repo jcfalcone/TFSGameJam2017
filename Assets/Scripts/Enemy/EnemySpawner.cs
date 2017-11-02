@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Singleton<EnemySpawner>
 {
 
     [SerializeField]
@@ -28,16 +28,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        // TODO replace with proper death trigger based of what is sent from specific enemies as they die
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            Respawn();
-        }
-    }
-
-    void Respawn()
+    public void Respawn(GameObject enemy)
     {
         // get a new location
         Transform newSpot = DetermineNewLocation();
@@ -45,11 +36,14 @@ public class EnemySpawner : MonoBehaviour
         // if one was found, reposition and reparent the enemy
         if (newSpot)
         {
-            transform.position = newSpot.position;
-            transform.rotation = newSpot.rotation;
-            transform.parent = newSpot;
+            enemy.transform.position = newSpot.position;
+            enemy.transform.rotation = newSpot.rotation;
+            enemy.transform.parent = newSpot;
         }
     }
+
+    public void Basic()
+    { }
 
     Transform DetermineNewLocation()
     {
@@ -69,7 +63,7 @@ public class EnemySpawner : MonoBehaviour
         }
 
         // if getting here, all locations are occupied (which shouldn't happen) and we return null
-        Debug.LogError("Couldn'r resolve new enemy location");
+        Debug.LogError("Couldn't resolve new enemy location");
         return null;
     }
 }

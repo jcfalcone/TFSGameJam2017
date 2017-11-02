@@ -10,6 +10,8 @@ using UnityEngine;
 
 public class Enemy : BaseCharacter
 {
+    private const float MAX_HEALTH = 1;
+
     [SerializeField]
     private GameObject _shot;
     [SerializeField]
@@ -19,7 +21,8 @@ public class Enemy : BaseCharacter
     {
         // setup initial definitions
         SetStamina(0);
-        SetMaxHealth(1);
+        SetMaxHealth(MAX_HEALTH);
+        SetHealth(MAX_HEALTH);
         SetupRigidbody();
     }
 
@@ -45,5 +48,19 @@ public class Enemy : BaseCharacter
 
         // TODO	remove once proper shot destruction is in place
         Destroy(shot, 1);
+    }
+
+    public void Die()
+    {
+        // TODO add animation, SFX, etc
+
+        // have the EnemySpawner determine how to Respawn the Enemy
+        EnemySpawner.instance.Respawn(gameObject);
+
+        // reset the Enemy info
+        SetHealth(MAX_HEALTH);
+        isDead = false;
+        // TODO include other data, such as state
+        // TODO (if needed) CancelInvoke of Shoot
     }
 }

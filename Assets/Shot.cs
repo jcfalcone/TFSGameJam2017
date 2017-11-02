@@ -6,10 +6,12 @@ public class Shot : MonoBehaviour
 {
     void OnParticleCollision(GameObject other)
     {
-        if (other.tag == "Enemy")
+        Enemy enemy = other.GetComponent<Enemy>();
+
+        if (enemy)
         {
-            BaseCharacter character = other.GetComponent<BaseCharacter>();
-            character.TakeDamage(character.GetMaxHealth());
+            enemy.TakeDamage(enemy.GetMaxHealth());
+            enemy.Die();
         }
     }
 }
