@@ -18,8 +18,12 @@ public class TemplateState
     bool isMovable = true;
 
     [SerializeField]
-    [Range(0f, 20f)]
+    [Range(100f, 500f)]
     protected float speed;
+
+    [SerializeField]
+    [Range(0f, 2f)]
+    protected float staminaRecoverRate;
 
     [Header("Reference")]
     [SerializeField]
@@ -59,5 +63,10 @@ public class TemplateState
     virtual public bool IsMovable()
     {
         return this.isMovable;
+    }
+
+    virtual public float GetStaminaRecover()
+    {
+        return this.staminaRecoverRate;
     }
 }

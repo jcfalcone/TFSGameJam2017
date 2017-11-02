@@ -33,6 +33,8 @@ public class PlayerStateManager : StateManagerTemplate
         {
             this.states[(int)this.currState].Tick();
         }
+
+        this.parent.RecoverStamina();
     }
 
     override public void FixedTick()
@@ -65,6 +67,8 @@ public class PlayerStateManager : StateManagerTemplate
 
         this.parent.SetIsMovable(this.isMovable());
         this.parent.SetupAnimator(this.GetAnimator());
+        this.parent.SetStaminaBurnRate(this.GetStaminaRecover());
+        this.parent.SetMovePseed(this.GetSpeed());
     }
 
     public void SetState(TemplateState.States _State)
@@ -100,5 +104,15 @@ public class PlayerStateManager : StateManagerTemplate
         }
 
         return this.states[(int)this.currState].IsMovable();
+    }
+
+    public float GetStaminaRecover()
+    {
+        if (this.currState == TemplateState.States.Invalid)
+        {
+            return -1f;
+        }
+
+        return this.states[(int)this.currState].GetStaminaRecover();
     }
 }

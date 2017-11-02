@@ -5,7 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public abstract class StateManagerTemplate
 {
-    public int banana = 10;
 
     [SerializeField]
     protected List<TemplateState> states = new List<TemplateState>();
