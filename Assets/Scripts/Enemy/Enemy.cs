@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Patrol))]
 [RequireComponent(typeof(Detection))]
+[RequireComponent(typeof(NavMeshAgent))]
 
 public class Enemy : BaseCharacter
 {
@@ -16,6 +18,8 @@ public class Enemy : BaseCharacter
     private GameObject _shot;
     [SerializeField]
     private float _shotInterval;
+    private Patrol _patrol;
+    public bool seeingPlayer = false;
 
     void Awake()
     {
@@ -24,6 +28,8 @@ public class Enemy : BaseCharacter
         SetMaxHealth(MAX_HEALTH);
         SetHealth(MAX_HEALTH);
         SetupRigidbody();
+
+        _patrol = GetComponent<Patrol>();
     }
 
     void Update()
@@ -37,6 +43,16 @@ public class Enemy : BaseCharacter
         if (Input.GetKeyDown(KeyCode.L))
         {
             CancelInvoke("Shoot");
+        }
+
+        // TODO replace with proper Detection and stateManagement once available
+        if (seeingPlayer)
+        {
+            _patrol.StopPatrolling();
+        }
+        else
+        {
+            _patrol.PatrolAround();
         }
     }
 
