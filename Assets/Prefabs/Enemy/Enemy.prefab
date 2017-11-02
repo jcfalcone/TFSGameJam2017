@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 114500106116256170}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58341fc214d84557a3185c54f4680e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shot: {fileID: 1350663046005304, guid: 7918be6d28a2c41d58531aad6a6ef700, type: 2}
+  _shot: {fileID: 1298566559628674, guid: 4670941bd4eaf4d5eb8ca42a7ae92f7b, type: 2}
   _shotInterval: 3
 --- !u!114 &114973397148095584
 MonoBehaviour:
