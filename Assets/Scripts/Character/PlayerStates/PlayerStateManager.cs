@@ -26,6 +26,11 @@ public class PlayerStateManager : StateManagerTemplate
 
         this.currState = TemplateState.States.Invalid;
         this.desireState = TemplateState.States.Invalid;
+
+        for (int count = 0; count < this.states.Count; count++)
+        {
+            this.states[count].Init();
+        }
     }
 
     override public void Start()

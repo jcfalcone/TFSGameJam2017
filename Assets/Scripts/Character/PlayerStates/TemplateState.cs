@@ -34,19 +34,24 @@ public class TemplateState
 
     [Header("Reference")]
     [SerializeField]
-    protected GameObject Model;
+    protected GameObject model;
 
     [SerializeField]
     protected Animator modelAnimator;
 
+    virtual public void Init()
+    {
+        this.model.SetActive(false);
+    }
+
     virtual public void Start()
     {
-        this.Model.SetActive(true);
+        this.model.SetActive(true);
     }
 
     virtual public void End()
     {
-        this.Model.SetActive(false);
+        this.model.SetActive(false);
     }
 
     virtual public void Tick()
