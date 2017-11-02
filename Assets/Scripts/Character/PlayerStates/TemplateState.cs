@@ -8,7 +8,7 @@ public class TemplateState
     public enum States
     {
         Invalid = -1,
-        Default,
+        Default = 0,
         Intangible,
         Solid
     }
@@ -27,6 +27,10 @@ public class TemplateState
     [SerializeField]
     [Range(0f, 2f)]
     protected float staminaRecoverRate;
+
+    [SerializeField]
+    [Range(0f, 2f)]
+    protected float staminaBurnRate;
 
     [Header("Reference")]
     [SerializeField]
@@ -71,5 +75,10 @@ public class TemplateState
     virtual public float GetStaminaRecover()
     {
         return this.staminaRecoverRate;
+    }
+
+    virtual public float GetStaminaBurn()
+    {
+        return this.staminaBurnRate;
     }
 }

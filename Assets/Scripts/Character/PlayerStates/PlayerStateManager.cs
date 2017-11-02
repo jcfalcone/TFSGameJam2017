@@ -5,8 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class PlayerStateManager : StateManagerTemplate
 {
-
+    [SerializeField]
     TemplateState.States currState;
+
+    [SerializeField]
     TemplateState.States desireState;
 
     Player parent;
@@ -21,6 +23,9 @@ public class PlayerStateManager : StateManagerTemplate
     public void Init(Player _parent)
     {
         this.parent = _parent;
+
+        this.currState = TemplateState.States.Invalid;
+        this.desireState = TemplateState.States.Invalid;
     }
 
     override public void Start()
@@ -61,7 +66,11 @@ public class PlayerStateManager : StateManagerTemplate
             return;
         }
 
-        this.states[(int)this.currState].End();
+        if (this.currState != TemplateState.States.Invalid)
+        {
+            this.states[(int)this.currState].End();
+        }
+
         this.states[(int)this.desireState].Start();
 
         this.currState = this.desireState;
@@ -69,12 +78,19 @@ public class PlayerStateManager : StateManagerTemplate
 
         this.parent.SetIsMovable(this.isMovable());
         this.parent.SetupAnimator(this.GetAnimator());
-        this.parent.SetStaminaBurnRate(this.GetStaminaRecover());
+        this.parent.SetStaminaRecoverRate(this.GetStaminaRecover());
+        this.parent.SetStaminaBurnRate(this.GetStaminaBurn());
         this.parent.SetMovePseed(this.GetSpeed());
     }
 
     public void SetState(TemplateState.States _State)
     {
+        if (this.currState == _State)
+        {
+            return;
+        }
+
+        Debug.Log(this.desireState + " - " + _State + " - " + (int)this.desireState);
         this.desireState = _State;
     }
 
@@ -116,5 +132,15 @@ public class PlayerStateManager : StateManagerTemplate
         }
 
         return this.states[(int)this.currState].GetStaminaRecover();
+    }
+
+    public float GetStaminaBurn()
+    {
+        if (this.currState == TemplateState.States.Invalid)
+        {
+            return -1f;
+        }
+
+        return this.states[(int)this.currState].GetStaminaBurn();
     }
 }
