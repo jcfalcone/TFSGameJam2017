@@ -11,6 +11,7 @@ public class Player : BaseCharacter
     [SerializeField] [Range(100, 500)] float moveSpeed;
 
     bool isMovable;
+    bool isFacingRight;
 
     int axisX;
     int axisY;
@@ -35,6 +36,7 @@ public class Player : BaseCharacter
 
         this.isDead = false;
         this.isMovable = true;
+        this.isFacingRight = true;
 	}
 	
 	// Update is called once per frame
@@ -59,14 +61,28 @@ public class Player : BaseCharacter
 
         currentAnimation = (int)Animations.Idle;
 
-        if (Input.GetKey(KeyCode.W)) axisY = 1;
+        if (Input.GetKey(KeyCode.W))
+        {
+            axisY = 1;
+            currentAnimation = (int)Animations.Walk;
+        }
 
-        if (Input.GetKey(KeyCode.D)) axisX = 1;
+        if (Input.GetKey(KeyCode.D))
+        {
+            axisX = 1;
+            currentAnimation = (int)Animations.Walk;
+            isFacingRight = true;
+        }
 
-        if (Input.GetKey(KeyCode.A)) axisX = -1;
+        if (Input.GetKey(KeyCode.A))
+        {
+            axisX = -1;
+            currentAnimation = (int)Animations.Walk;
+            isFacingRight = false;
+        }
     }
 
-    void SetIsMovable( bool condition ) { this.isMovable = condition; }
+    public void SetIsMovable( bool condition ) { this.isMovable = condition; }
 
-    void SetupAnimator( Animator newAnim ) { this.anim = newAnim; }
+    public void SetupAnimator( Animator newAnim ) { this.anim = newAnim; }
 }
