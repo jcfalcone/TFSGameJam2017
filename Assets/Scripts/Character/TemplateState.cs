@@ -13,6 +13,15 @@ public class TemplateState
         Solid
     }
 
+    public enum StatesAI
+    {
+        Invalid = -1,
+        Idle = 0,
+        Patrol,
+        Engage,
+        Dead
+    }
+
     [SerializeField]
     protected States state;
 

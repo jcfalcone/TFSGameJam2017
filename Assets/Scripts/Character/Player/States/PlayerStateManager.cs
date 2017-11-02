@@ -95,7 +95,6 @@ public class PlayerStateManager : StateManagerTemplate
             return;
         }
 
-        Debug.Log(this.desireState + " - " + _State + " - " + (int)this.desireState);
         this.desireState = _State;
     }
 
