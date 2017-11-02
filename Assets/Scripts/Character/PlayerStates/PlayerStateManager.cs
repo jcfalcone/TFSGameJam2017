@@ -14,6 +14,8 @@ public class PlayerStateManager : StateManagerTemplate
     public PlayerStateManager()
     {
         this.states.Add(new DefaultState());
+        this.states.Add(new IntangibleState());
+        this.states.Add(new SolidState());
     }
 
     public void Init(Player _parent)

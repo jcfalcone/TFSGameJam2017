@@ -13,6 +13,9 @@ public class TemplateState
         Solid
     }
 
+    [SerializeField]
+    protected States state;
+
     [Header("Movement")]
     [SerializeField]
     bool isMovable = true;

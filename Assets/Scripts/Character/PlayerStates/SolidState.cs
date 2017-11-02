@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class DefaultState : TemplateState
+public class SolidState : TemplateState 
 {
-    public DefaultState()
+    public SolidState()
     {
-        this.state = States.Default;
+        this.state = States.Solid;
     }
 
     override public void Tick()
