@@ -55,7 +55,7 @@ public class Player : BaseCharacter
 	
 	void Update ()
     {
-        if (!this.isMovable || this.isDead) return;
+        if (this.isDead) return;
         
         CheckInput();
 
@@ -75,37 +75,44 @@ public class Player : BaseCharacter
         this.axisY = 0;
 
         this.currentAnimation = (int)Animations.Idle;
-        if (Input.GetKey(KeyCode.W) && this.canFloat)
+        if (this.isMovable)
         {
-            this.axisY = 1;
-            this.currentAnimation = (int)Animations.Walk;
-            SpendStamina();
-        }
+            if (Input.GetKey(KeyCode.W) && this.canFloat)
+            {
+                this.axisY = 1;
+                this.currentAnimation = (int)Animations.Walk;
+                SpendStamina();
+            }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            this.axisX = 1;
-            this.currentAnimation = (int)Animations.Walk;
-            this.isFacingRight = true;
-        }
+            if (Input.GetKey(KeyCode.D))
+            {
+                this.axisX = 1;
+                this.currentAnimation = (int)Animations.Walk;
+                this.isFacingRight = true;
+            }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            this.axisX = -1;
-            this.currentAnimation = (int)Animations.Walk;
-            this.isFacingRight = false;
+            if (Input.GetKey(KeyCode.A))
+            {
+                this.axisX = -1;
+                this.currentAnimation = (int)Animations.Walk;
+                this.isFacingRight = false;
+            }
         }
 
 
         /* CHANGE STATES FOR PLAYER */
-        this.stateManager.SetState(TemplateState.States.Default);
-        if (Input.GetMouseButtonDown(0))
+        
+        if (Input.GetMouseButton(0))
         {
             this.stateManager.SetState(TemplateState.States.Intangible);
         }
-        else if(Input.GetMouseButtonDown(1))
+        else if(Input.GetMouseButton(1))
         {
             this.stateManager.SetState(TemplateState.States.Solid);
+        }
+        else
+        {
+            this.stateManager.SetState(TemplateState.States.Default);
         }
 
         FlipMesh();
