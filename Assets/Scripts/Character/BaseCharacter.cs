@@ -10,8 +10,16 @@ public class BaseCharacter : MonoBehaviour
     protected float stamina;
 
     protected Rigidbody rb;
-
     protected Animator anim;
+
+    protected bool isDead;
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+            isDead = true;
+    }
 
     /* SET */
     public void SetStamina( float newStamina ) { this.stamina = newStamina; }
@@ -20,7 +28,6 @@ public class BaseCharacter : MonoBehaviour
     public void SetHealth( float newHealth ) { this.health = newHealth; }
 
     public void SetupRigidbody() { rb = GetComponent<Rigidbody>(); }
-    public void SetupAnimator() { anim = GetComponent<Animator>(); }
 
     /* GET */
     public float GetStamina() { return this.stamina; }
@@ -30,5 +37,4 @@ public class BaseCharacter : MonoBehaviour
     public float GetRationHealth() { return (this.health / this.maxHealth) * 100; }
 
     public Rigidbody GetRigidbody() { return this.rb; }
-    public Animator GetAnimator() { return this.anim; }
 }

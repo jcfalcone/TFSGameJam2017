@@ -10,26 +10,39 @@ public class Player : BaseCharacter
     [SerializeField] [Range(100, 500)] float upForce;
     [SerializeField] [Range(100, 500)] float moveSpeed;
 
+    bool isMovable;
+
+    int axisX;
+    int axisY;
+
+    enum Animations : int
+    {
+        Idle,
+        Walk,
+        Rigid
+    }
+    int currentAnimation;
+
     void Start ()
     {
         SetupRigidbody();
-        SetupAnimator();
 
         transform.position = spawnPoint.position;
 
-        if (this.upForce <= 0.0f) this.upForce = 10.0f;
-        if (this.moveSpeed <= 0.0f) this.moveSpeed = 3.0f;
+        if (this.gravityForce <= 0.0f) this.gravityForce = 100.0f;
+        if (this.upForce <= 0.0f) this.upForce = 250.0f;
+        if (this.moveSpeed <= 0.0f) this.moveSpeed = 250.0f;
+
+        this.isDead = false;
+        this.isMovable = true;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        int axisX = 0;
-        int axisY = 0;
-
-		if (Input.GetKey(KeyCode.W))        axisY = 1;
-        if (Input.GetKey(KeyCode.D))        axisX = 1;
-        if (Input.GetKey(KeyCode.A))        axisX = -1;
+        if (!isMovable || isDead) return;
+        
+        CheckInput();
 
         rb.velocity = ((transform.forward * axisX) + (transform.up * axisY)) * this.moveSpeed * Time.deltaTime;
     }
@@ -38,4 +51,22 @@ public class Player : BaseCharacter
     {
         rb.AddForce(-transform.up * gravityForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
     }
+
+    void CheckInput()
+    {
+        axisX = 0;
+        axisY = 0;
+
+        currentAnimation = (int)Animations.Idle;
+
+        if (Input.GetKey(KeyCode.W)) axisY = 1;
+
+        if (Input.GetKey(KeyCode.D)) axisX = 1;
+
+        if (Input.GetKey(KeyCode.A)) axisX = -1;
+    }
+
+    void SetIsMovable( bool condition ) { this.isMovable = condition; }
+
+    void SetupAnimator( Animator newAnim ) { this.anim = newAnim; }
 }
