@@ -10,6 +10,8 @@ using UnityEngine;
 
 public class Enemy : BaseCharacter
 {
+    private const float MAX_HEALTH = 1;
+
     [SerializeField]
     private GameObject _shot;
     [SerializeField]
@@ -17,8 +19,10 @@ public class Enemy : BaseCharacter
 
     void Awake()
     {
+        // setup initial definitions
         SetStamina(0);
-        SetMaxHealth(1);
+        SetMaxHealth(MAX_HEALTH);
+        SetHealth(MAX_HEALTH);
         SetupRigidbody();
     }
 
@@ -27,6 +31,7 @@ public class Enemy : BaseCharacter
         // TODO replace with proper stateManagement triggers once available
         if (Input.GetKeyDown(KeyCode.K))
         {
+            // shoot immediately, and then again after a certain time
             InvokeRepeating("Shoot", 0, _shotInterval);
         }
         if (Input.GetKeyDown(KeyCode.L))
@@ -37,10 +42,25 @@ public class Enemy : BaseCharacter
 
     void Shoot()
     {
+        // generate and reparent shot
         GameObject shot = Instantiate(_shot, transform.position + transform.forward, transform.rotation);
         shot.transform.parent = transform;
 
         // TODO	remove once proper shot destruction is in place
         Destroy(shot, 1);
+    }
+
+    public void Die()
+    {
+        // TODO add animation, SFX, etc
+
+        // have the EnemySpawner determine how to Respawn the Enemy
+        EnemySpawner.instance.Respawn(gameObject);
+
+        // reset the Enemy info
+        SetHealth(MAX_HEALTH);
+        isDead = false;
+        // TODO include other data, such as state
+        // TODO (if needed) CancelInvoke of Shoot
     }
 }
