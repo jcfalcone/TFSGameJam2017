@@ -154,7 +154,8 @@ public class BuildScript
         buildPath += PlayerSettings.bundleVersion.Replace(".","_");
 
         BuildPipeline.BuildPlayer(isDev ? devScene : relScene, buildPath+"_Windows", BuildTarget.StandaloneWindows, isDev ? BuildOptions.Development : BuildOptions.None);
-        BuildPipeline.BuildPlayer(isDev ? devScene : relScene, buildPath+"_Mac", BuildTarget.StandaloneOSX, isDev ? BuildOptions.Development : BuildOptions.None);
+        // TODO Review BuildTarget.StandaloneOSX with Julio
+        // BuildPipeline.BuildPlayer(isDev ? devScene : relScene, buildPath+"_Mac", BuildTarget.StandaloneOSX, isDev ? BuildOptions.Development : BuildOptions.None);
 
         EditorUtility.RevealInFinder(Application.dataPath.Replace("/Assets", "/Builds")+"/PC/");
 
