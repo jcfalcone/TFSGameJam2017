@@ -21,15 +21,20 @@ public class Enemy : BaseCharacter
     private Patrol _patrol;
     public bool seeingPlayer = false;
 
-    void Awake()
+    void Start()
     {
-        // setup initial definitions
+        Init();
+    }
+
+    void Init()
+    {
         SetStamina(0);
         SetMaxHealth(MAX_HEALTH);
         SetHealth(MAX_HEALTH);
         SetupRigidbody();
 
         _patrol = GetComponent<Patrol>();
+        _patrol.GeneratePath();
     }
 
     void Update()
@@ -70,13 +75,12 @@ public class Enemy : BaseCharacter
     {
         // TODO add animation, SFX, etc
 
+        // reset the Enemy info
+        Init();
+        CancelInvoke("Shoot");
+        // TODO include other data, such as state
+
         // have the EnemySpawner determine how to Respawn the Enemy
         EnemySpawner.instance.Respawn(gameObject);
-
-        // reset the Enemy info
-        SetHealth(MAX_HEALTH);
-        isDead = false;
-        // TODO include other data, such as state
-        // TODO (if needed) CancelInvoke of Shoot
     }
 }

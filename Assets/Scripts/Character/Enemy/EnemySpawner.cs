@@ -9,10 +9,10 @@ public class EnemySpawner : Singleton<EnemySpawner>
     private GameObject _enemyPrefab;
 
     [SerializeField]
-    private Transform[] _initialSpawnSpots;
+    private Transform _initialSpawnSpots;
 
     [SerializeField]
-    private Transform[] _relocationSpots;
+    private Transform _relocationSpots;
 
     void Start()
     {
@@ -48,13 +48,13 @@ public class EnemySpawner : Singleton<EnemySpawner>
     Transform DetermineNewLocation()
     {
         // select a random spot amongst the relocation options
-        int spot = Random.Range(0, _relocationSpots.Length);
+        int spot = Random.Range(0, _relocationSpots.childCount);
 
         // check if there's an enemy there already
         // if there isn't, return that location
-        if (_relocationSpots[spot].childCount <= 0)
+        if (_relocationSpots.GetChild(spot).childCount <= 0)
         {
-            return _relocationSpots[spot];
+            return _relocationSpots.GetChild(spot);
         }
         // if there is, try again
         else

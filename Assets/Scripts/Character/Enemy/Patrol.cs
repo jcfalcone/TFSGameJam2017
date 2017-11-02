@@ -48,14 +48,12 @@ public class Patrol : MonoBehaviour
     [SerializeField]
     private PathNode[] path;
 
-    public Transform marker;
+    // public Transform marker;
 
 
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        GeneratePath();
-        agent.SetDestination(path[_currentPathNode].position);
     }
 
     public void PatrolAround()
@@ -79,7 +77,7 @@ public class Patrol : MonoBehaviour
         agent.isStopped = true;
     }
 
-    void GeneratePath()
+    public void GeneratePath()
     {
         path = new PathNode[pathNodes];
 
@@ -89,7 +87,7 @@ public class Patrol : MonoBehaviour
             PathNode thisPathNode = new PathNode();
             thisPathNode.position = thisPosition;
             path[i] = thisPathNode;
-            Instantiate(marker, thisPosition + Vector3.up, Quaternion.identity);
+            // Instantiate(marker, thisPosition + Vector3.up, Quaternion.identity);
             // Debug.Log(Time.frameCount + " >> thisPosition [" + i + "]" + thisPosition);
         }
 
@@ -97,6 +95,8 @@ public class Patrol : MonoBehaviour
         {
             _currentPathNode = 0;
         }
+
+        agent.SetDestination(path[_currentPathNode].position);
     }
 
     Vector3 GenerateRandomVector3()
@@ -125,7 +125,6 @@ public class Patrol : MonoBehaviour
         }
         return false;
     }
-
 
     public void GetNextPathNode()
     {
