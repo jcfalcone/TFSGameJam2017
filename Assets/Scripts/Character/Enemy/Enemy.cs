@@ -38,9 +38,9 @@ public class Enemy : BaseCharacter
         SetHealth(MAX_HEALTH);
         SetupRigidbody();
 
-        _patrol = GetComponent<Patrol>();
+        // _patrol = GetComponent<Patrol>();
 
-        _patrol.GeneratePath();
+        // _patrol.GeneratePath();
 
         GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
 
@@ -63,15 +63,15 @@ public class Enemy : BaseCharacter
             CancelInvoke("Shoot");
         }
 
-        // TODO replace with proper Detection and stateManagement once available
-        if (seeingPlayer)
-        {
-            _patrol.StopPatrolling();
-        }
-        else
-        {
-            _patrol.PatrolAround();
-        }
+        // // TODO replace with proper Detection and stateManagement once available
+        // if (seeingPlayer)
+        // {
+        //     _patrol.StopPatrolling();
+        // }
+        // else
+        // {
+        //     _patrol.PatrolAround();
+        // }
     }
 
     void Shoot()
