@@ -14,11 +14,14 @@ public class Switch : MonoBehaviour
         FinalizeSwitch();
     }
 
-    void Update()
+    void OnTriggerStay(Collider coll)
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (coll.tag == "Player")
         {
-            Activate();
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                Activate();
+            }
         }
     }
 
