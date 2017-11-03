@@ -5,13 +5,7 @@ using UnityEngine;
 public class Switch : MonoBehaviour
 {
     [SerializeField]
-    private Transform _affectedObject;
-
-    [SerializeField]
-    private float _speed;
-
-    [SerializeField]
-    private Transform _destination;
+    private List<SwitchTarget> _affectedObjects;
 
     void Activate()
     {
@@ -35,27 +29,14 @@ public class Switch : MonoBehaviour
 
     void ExecuteSwitch()
     {
-        StartCoroutine(MoveAffectedObject());
+        foreach (SwitchTarget target in _affectedObjects)
+        {
+            StartCoroutine(target.MoveAffectedObject());
+        }
     }
 
     void FinalizeSwitch()
     {
         // animation, sounds, etc
-    }
-
-    IEnumerator MoveAffectedObject()
-    {
-        Rigidbody affectedObjectedRB = _affectedObject.GetComponent<Rigidbody>();
-        if (affectedObjectedRB)
-        {
-            Vector3 direction = (_destination.position - _affectedObject.position).normalized;
-            while (Vector3.Distance(_affectedObject.position, _destination.position) > 1)
-            {
-                affectedObjectedRB.MovePosition(_affectedObject.position + direction * _speed * Time.deltaTime);
-                yield return new WaitForEndOfFrame();
-            }
-        }
-
-        yield return null;
     }
 }
