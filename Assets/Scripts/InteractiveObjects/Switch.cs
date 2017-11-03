@@ -18,7 +18,7 @@ public class Switch : MonoBehaviour
     {
         if (coll.tag == "Player")
         {
-            if (Input.GetKeyDown(KeyCode.M))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 Activate();
             }
