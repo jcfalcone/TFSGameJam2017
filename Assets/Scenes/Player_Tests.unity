@@ -353,6 +353,21 @@ Prefab:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 180171444}
+    - target: {fileID: 198995875212053692, guid: 34a7169b14ce33c43bdab9a9e648aef7,
+        type: 2}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 198995875212053692, guid: 34a7169b14ce33c43bdab9a9e648aef7,
+        type: 2}
+      propertyPath: randomSeed
+      value: -2113701310
+      objectReference: {fileID: 0}
+    - target: {fileID: 198995875212053692, guid: 34a7169b14ce33c43bdab9a9e648aef7,
+        type: 2}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
   m_IsPrefabParent: 0
