@@ -132,10 +132,12 @@ public class Player : BaseCharacter
         if(!isFacingRight)
         {
             mesh.localRotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+            mesh.localScale = new Vector3(-1.0f, 1.0f, 1.0f);
         }
         else
         {
             mesh.localRotation = Quaternion.identity;
+            mesh.localScale = new Vector3(1.0f, 1.0f, 1.0f);
         }
     }
 
