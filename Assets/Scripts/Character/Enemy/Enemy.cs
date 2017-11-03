@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Collider))]
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(Patrol))]
-[RequireComponent(typeof(Detection))]
-[RequireComponent(typeof(NavMeshAgent))]
+// [RequireComponent(typeof(Collider))]
+// [RequireComponent(typeof(Rigidbody))]
+// [RequireComponent(typeof(Animator))]
+// [RequireComponent(typeof(Patrol))]
+// [RequireComponent(typeof(Detection))]
+// [RequireComponent(typeof(NavMeshAgent))]
 
 public class Enemy : BaseCharacter
 {
@@ -21,12 +21,24 @@ public class Enemy : BaseCharacter
     private Patrol _patrol;
     public bool seeingPlayer = false;
 
-    void Start()
-    {
-        Init();
-    }
+    [SerializeField]
+    private Waypoint[] path;
 
-    void Init()
+    [SerializeField]
+    [Range(0f, 10f)]
+    float minRangePlayer;
+
+    [SerializeField]
+    [Range(0, 360)]
+    float minAnglePlayer;
+
+    [SerializeField]
+    [Range(0, 360)]
+    float maxAnglePlayer;
+
+    Transform player;
+
+    void Awake()
     {
         SetStamina(0);
         SetMaxHealth(MAX_HEALTH);
@@ -34,7 +46,15 @@ public class Enemy : BaseCharacter
         SetupRigidbody();
 
         _patrol = GetComponent<Patrol>();
+
         _patrol.GeneratePath();
+
+        GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
+
+        if (tempPlayer)
+        {
+            this.player = tempPlayer.transform;
+        }
     }
 
     void Update()
@@ -76,11 +96,35 @@ public class Enemy : BaseCharacter
         // TODO add animation, SFX, etc
 
         // reset the Enemy info
-        Init();
         CancelInvoke("Shoot");
         // TODO include other data, such as state
 
         // have the EnemySpawner determine how to Respawn the Enemy
         EnemySpawner.instance.Respawn(gameObject);
+    }
+
+    public Waypoint[] GetPath()
+    {
+        return this.path;
+    }
+
+    public Transform GetPlayer()
+    {
+        return this.player;
+    }
+
+    public float GetMinRange()
+    {
+        return this.minRangePlayer;
+    }
+
+    public float GetMinAngle()
+    {
+        return this.minAnglePlayer;
+    }
+
+    public float GetMaxAngle()
+    {
+        return this.maxAnglePlayer;
     }
 }

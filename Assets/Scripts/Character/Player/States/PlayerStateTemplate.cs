@@ -32,17 +32,6 @@ public class PlayerStateTemplate : TemplateState
     [Range(0f, 2f)]
     protected float staminaBurnRate;
 
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-    }
-
     virtual public bool IsMovable()
     {
         return this.isMovable;

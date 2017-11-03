@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-[RequireComponent(typeof(NavMeshAgent))]
 public class Patrol : MonoBehaviour
 {
     private NavMeshAgent agent;
