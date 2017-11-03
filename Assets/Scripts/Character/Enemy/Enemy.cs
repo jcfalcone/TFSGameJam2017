@@ -31,6 +31,9 @@ public class Enemy : BaseCharacter
 
     Transform player;
 
+    [SerializeField]
+    private Transform shotSpawnPoint;
+
     void Awake()
     {
         SetStamina(0);
@@ -77,11 +80,8 @@ public class Enemy : BaseCharacter
     void Shoot()
     {
         // generate and reparent shot
-        GameObject shot = Instantiate(_shot, transform.position + transform.forward, transform.rotation);
-        shot.transform.parent = transform;
-
-        // TODO	remove once proper shot destruction is in place
-        Destroy(shot, 1);
+        GameObject shot = Instantiate(_shot, shotSpawnPoint.position, shotSpawnPoint.rotation);
+        shot.transform.parent = shotSpawnPoint;
     }
 
     public void Die()

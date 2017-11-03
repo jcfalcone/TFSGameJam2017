@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 54478790459934382}
   - component: {fileID: 95161143626184854}
   - component: {fileID: 114892048189382956}
+  - component: {fileID: 136983213887805514}
   m_Layer: 0
   m_Name: Reaper
   m_TagString: Enemy
@@ -109,6 +110,21 @@ GameObject:
   - component: {fileID: 23690705200229506}
   m_Layer: 0
   m_Name: mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1443504790418406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4913090582599872}
+  m_Layer: 0
+  m_Name: ShotSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,7 +338,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1291136850432558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.22, z: -7.65}
+  m_LocalPosition: {x: -3.66, y: 0.22, z: -7.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4506462392923946}
@@ -332,8 +348,22 @@ Transform:
   - {fileID: 4231077840932934}
   - {fileID: 4295222872675848}
   - {fileID: 4518498332777932}
+  - {fileID: 4913090582599872}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4913090582599872
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1443504790418406}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.99, z: 0.869}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4553102409271314}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4970124599906616
 Transform:
@@ -668,6 +698,20 @@ MonoBehaviour:
   minRangePlayer: 1.6
   minAnglePlayer: 53
   maxAnglePlayer: 19
+  shotSpawnPoint: {fileID: 4913090582599872}
+--- !u!136 &136983213887805514
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1291136850432558}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.77068794
+  m_Height: 2.5944412
+  m_Direction: 1
+  m_Center: {x: -0.018668056, y: 0.7972206, z: 0}
 --- !u!195 &195528593483131452
 NavMeshAgent:
   m_ObjectHideFlags: 1

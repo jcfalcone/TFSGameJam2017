@@ -22,9 +22,10 @@ public class EnemySpawner : Singleton<EnemySpawner>
     void SpawnLevelEnemies()
     {
         // generate a new enemy on each initial location
-        foreach (Transform spot in _initialSpawnSpots)
+        for (int i = 0; i < _initialSpawnSpots.childCount; i++)
         {
-            GameObject.Instantiate(_enemyPrefab, spot);
+            GameObject enemy = GameObject.Instantiate(_enemyPrefab, _initialSpawnSpots.GetChild(i));
+            enemy.name = "Enemy " + i;
         }
     }
 
@@ -42,14 +43,12 @@ public class EnemySpawner : Singleton<EnemySpawner>
         }
     }
 
-    public void Basic()
-    { }
-
     Transform DetermineNewLocation()
     {
         // select a random spot amongst the relocation options
         int spot = Random.Range(0, _relocationSpots.childCount);
 
+        Debug.Log("spot found; " + spot);
         // check if there's an enemy there already
         // if there isn't, return that location
         if (_relocationSpots.GetChild(spot).childCount <= 0)
