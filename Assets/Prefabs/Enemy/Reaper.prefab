@@ -37,12 +37,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4553102409271314}
   - component: {fileID: 195528593483131452}
-  - component: {fileID: 136220428390818976}
   - component: {fileID: 54478790459934382}
   - component: {fileID: 95161143626184854}
   - component: {fileID: 114892048189382956}
-  - component: {fileID: 114438252056688996}
-  - component: {fileID: 114822795740255074}
+  - component: {fileID: 114624101143771138}
   m_Layer: 0
   m_Name: Reaper
   m_TagString: Enemy
@@ -220,7 +218,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1291136850432558}
   m_LocalRotation: {x: -0, y: 0.99746037, z: -0, w: 0.07122363}
-  m_LocalPosition: {x: 1.1597197, y: 0, z: -7.417222}
+  m_LocalPosition: {x: -0.48, y: 0.22, z: -7.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4506462392923946}
@@ -479,7 +477,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 64
   m_CollisionDetection: 0
 --- !u!95 &95161143626184854
 Animator:
@@ -498,18 +496,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114438252056688996
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1291136850432558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3391433f437b745e6a7fe19141d1c8ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114822795740255074
+--- !u!114 &114624101143771138
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -520,11 +507,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f00f54e2dce864534a69c43864f889a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathNodes: 5
-  minX: -20
-  maxX: 20
-  minZ: -20
-  maxZ: 20
+  pathNodes: 1
+  minX: -5
+  maxX: 5
+  minZ: -5
+  maxZ: 5
   pathNodeProximityTolerance: 1
   pathType: 0
 --- !u!114 &114892048189382956
@@ -541,19 +528,10 @@ MonoBehaviour:
   _shot: {fileID: 1298566559628674, guid: 4670941bd4eaf4d5eb8ca42a7ae92f7b, type: 2}
   _shotInterval: 3
   seeingPlayer: 0
---- !u!136 &136220428390818976
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1291136850432558}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.5, z: 0}
+  path: []
+  minRangePlayer: 0
+  minAnglePlayer: 0
+  maxAnglePlayer: 0
 --- !u!195 &195528593483131452
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -561,7 +539,7 @@ NavMeshAgent:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1291136850432558}
   m_Enabled: 1
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8

@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-// [RequireComponent(typeof(Collider))]
-// [RequireComponent(typeof(Rigidbody))]
-// [RequireComponent(typeof(Animator))]
-// [RequireComponent(typeof(Patrol))]
-// [RequireComponent(typeof(Detection))]
-// [RequireComponent(typeof(NavMeshAgent))]
-
 public class Enemy : BaseCharacter
 {
     private const float MAX_HEALTH = 1;
