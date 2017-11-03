@@ -7,23 +7,36 @@ public class EnemyStateManager : StateManagerTemplate
 {
 
     [SerializeField]
-    protected List<TemplateState> states = new List<TemplateState>();
+    protected List<EnemyStateTemplate> states = new List<EnemyStateTemplate>();
 
     [SerializeField]
-    TemplateState.StatesAI currState;
+    EnemyStateTemplate.StatesAI currState;
 
     [SerializeField]
-    TemplateState.StatesAI desireState;
+    EnemyStateTemplate.StatesAI desireState;
 
     Enemy parent;
 
+    EnemyStateManager()
+    {
+        this.states.Add(new IdleState());
+        this.states.Add(new PatrolState());
+        this.states.Add(new EngageState());
+        this.states.Add(new DieState());
+    }
+
 	// Use this for initialization
-    void Init (Enemy _parent) 
+    public void Init (Enemy _parent) 
     {
         this.parent = _parent;
 
-        this.currState = TemplateState.StatesAI.Invalid;
-        this.desireState = TemplateState.StatesAI.Invalid;
+        this.currState = EnemyStateTemplate.StatesAI.Invalid;
+        this.desireState = EnemyStateTemplate.StatesAI.Invalid;
+
+        for (int count = 0; count < this.states.Count; count++)
+        {
+            this.states[count].Init(this.parent);
+        }
 		
     }
 
@@ -35,9 +48,11 @@ public class EnemyStateManager : StateManagerTemplate
     {
         this.CheckState();
 
-        if(this.currState != TemplateState.StatesAI.Invalid)
+        if(this.currState != EnemyStateTemplate.StatesAI.Invalid)
         {
             this.states[(int)this.currState].Tick();
+
+            this.SetState(this.states[(int)this.currState].NextState());
         }
     }
 
@@ -45,7 +60,7 @@ public class EnemyStateManager : StateManagerTemplate
     {
         this.CheckState();
 
-        if(this.currState != TemplateState.StatesAI.Invalid)
+        if(this.currState != EnemyStateTemplate.StatesAI.Invalid)
         {
             this.states[(int)this.currState].FixedTick();
         }
@@ -53,7 +68,7 @@ public class EnemyStateManager : StateManagerTemplate
 
     void CheckState()
     {
-        if (this.desireState == TemplateState.StatesAI.Invalid)
+        if (this.desireState == EnemyStateTemplate.StatesAI.Invalid)
         {
             return;
         }
@@ -63,7 +78,7 @@ public class EnemyStateManager : StateManagerTemplate
             return;
         }
 
-        if (this.currState != TemplateState.StatesAI.Invalid)
+        if (this.currState != EnemyStateTemplate.StatesAI.Invalid)
         {
             this.states[(int)this.currState].End();
         }
@@ -71,10 +86,10 @@ public class EnemyStateManager : StateManagerTemplate
         this.states[(int)this.desireState].Start();
 
         this.currState = this.desireState;
-        this.desireState = TemplateState.StatesAI.Invalid;
+        this.desireState = EnemyStateTemplate.StatesAI.Invalid;
     }
 
-    public void SetState(TemplateState.StatesAI _State)
+    public void SetState(EnemyStateTemplate.StatesAI _State)
     {
         if (this.currState == _State)
         {

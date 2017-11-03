@@ -6,18 +6,9 @@ using UnityEngine;
 public class TemplateState
 {
 
-    public enum StatesAI
-    {
-        Invalid = -1,
-        Idle = 0,
-        Patrol,
-        Engage,
-        Dead
-    }
-
     [Header("Movement")]
     [SerializeField]
-    [Range(100f, 500f)]
+    [Range(0f, 500f)]
     protected float speed;
 
     [Header("Reference")]

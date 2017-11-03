@@ -21,6 +21,23 @@ public class Enemy : BaseCharacter
     private Patrol _patrol;
     public bool seeingPlayer = false;
 
+    [SerializeField]
+    private Waypoint[] path;
+
+    [SerializeField]
+    [Range(0f, 10f)]
+    float minRangePlayer;
+
+    [SerializeField]
+    [Range(0, 360)]
+    float minAnglePlayer;
+
+    [SerializeField]
+    [Range(0, 360)]
+    float maxAnglePlayer;
+
+    Transform player;
+
     void Awake()
     {
         // setup initial definitions
@@ -30,6 +47,13 @@ public class Enemy : BaseCharacter
         SetupRigidbody();
 
         _patrol = GetComponent<Patrol>();
+
+        GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
+
+        if (tempPlayer)
+        {
+            this.player = tempPlayer.transform;
+        }
     }
 
     void Update()
@@ -78,5 +102,30 @@ public class Enemy : BaseCharacter
         isDead = false;
         // TODO include other data, such as state
         // TODO (if needed) CancelInvoke of Shoot
+    }
+
+    public Waypoint[] GetPath()
+    {
+        return this.path;
+    }
+
+    public Transform GetPlayer()
+    {
+        return this.player;
+    }
+
+    public float GetMinRange()
+    {
+        return this.minRangePlayer;
+    }
+
+    public float GetMinAngle()
+    {
+        return this.minAnglePlayer;
+    }
+
+    public float GetMaxAngle()
+    {
+        return this.maxAnglePlayer;
     }
 }
