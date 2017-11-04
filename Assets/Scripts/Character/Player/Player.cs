@@ -59,19 +59,21 @@ public class Player : BaseCharacter
 	
 	void Update ()
     {
-        if (this.isDead) return;
+        if (this.isDead)
+        {
+            this.stateManager.SetState(PlayerStateTemplate.States.Dead);
+            return;
+        }
         
         CheckInput();
 
         this.stateManager.Tick();
 
         rb.velocity = ((transform.forward * this.axisX) + (transform.up * this.axisY)) * this.moveSpeed * Time.deltaTime;
-    }
 
-    void FixedUpdate()
-    {
         rb.AddForce(-transform.up * gravityForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
     }
+    
 
     void LateUpdate()
     {

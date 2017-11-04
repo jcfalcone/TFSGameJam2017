@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1518512389}
-  m_IndirectSpecularColor: {r: 0.0012959566, g: 0.0015129733, b: 0.003965842, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1490,11 +1490,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4882588838424856, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.46
+      value: 5.92
       objectReference: {fileID: 0}
     - target: {fileID: 4882588838424856, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.06
+      value: 3.43
       objectReference: {fileID: 0}
     - target: {fileID: 4882588838424856, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1749,8 +1749,21 @@ Prefab:
         type: 2}
       propertyPath: bulletPrefab
       value: 
-      objectReference: {fileID: 1346776649290206, guid: 59a3ca538b316401185e61c4d063a54e,
+      objectReference: {fileID: 1346776649290206, guid: 0eb99f1ad946b40e0bc631b024af966b,
         type: 2}
+    - target: {fileID: 114567805018104130, guid: 8ca4e0bfd72474ecc9b94a1327491d0b,
+        type: 2}
+      propertyPath: minRangePlayer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177880506549654, guid: 8ca4e0bfd72474ecc9b94a1327491d0b, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4604432335422736, guid: 8ca4e0bfd72474ecc9b94a1327491d0b, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ca4e0bfd72474ecc9b94a1327491d0b, type: 2}
   m_IsPrefabParent: 0
