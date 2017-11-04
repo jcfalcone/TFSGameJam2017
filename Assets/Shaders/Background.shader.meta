@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 661e21904b7a54098ab84811b713883c
+timeCreated: 1509777217
+licenseType: Free
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _MainTex: {fileID: 2800000, guid: 1081f508d532442ce9b9c64e47360d89, type: 3}
+  - _Moon: {fileID: 2800000, guid: 47f92c2d5c9b54331bc64ff7ac9ddb32, type: 3}
+  - _Clouds: {fileID: 2800000, guid: 521f75f650fca4a748bf93a5a4ce822b, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
