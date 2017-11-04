@@ -84,6 +84,7 @@ public class Enemy : BaseCharacter
 
     public void Init()
     {
+
         SetStamina(0);
         SetMaxHealth(MAX_HEALTH);
         SetHealth(MAX_HEALTH);
