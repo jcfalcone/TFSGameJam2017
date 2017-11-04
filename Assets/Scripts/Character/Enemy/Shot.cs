@@ -11,7 +11,7 @@ public class Shot : MonoBehaviour
         if (enemy)
         {
             enemy.TakeDamage(enemy.GetMaxHealth());
-            enemy.Die();
+            //enemy.Die();
         }
     }
 }

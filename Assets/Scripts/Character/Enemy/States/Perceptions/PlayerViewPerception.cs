@@ -23,7 +23,7 @@ public class PlayerViewPerception : PerceptionTemplate
 
                 RaycastHit hit;
 
-                if (Physics.Linecast(this.parent.transform.position, player.transform.position, out hit))
+                if (Physics.Linecast(this.parent.transform.position, player.transform.position, out hit, this.parent.GetHitLayer()))
                 {
                     if (hit.transform.CompareTag("Player"))
                     {

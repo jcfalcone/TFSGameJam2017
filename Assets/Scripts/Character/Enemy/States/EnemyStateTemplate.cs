@@ -15,6 +15,17 @@ public class EnemyStateTemplate : TemplateState
         Die
     }
 
+    [Header("Movement Enemy")]
+    [SerializeField]
+    [Range(0f, 30f)]
+    protected float rotationSpeed;
+
+    [SerializeField]
+    [Range(0f, 3f)]
+    protected float pathProximityTolerance;
+
+
+    [Header("State")]
     [SerializeField]
     protected StatesAI state;
 
@@ -22,10 +33,6 @@ public class EnemyStateTemplate : TemplateState
     [SerializeField]
     [Range(-1f, 10f)]
     protected float timeInState;
-
-    [SerializeField]
-    [Range(0f, 3f)]
-    protected float pathProximityTolerance;
 
     protected List<PerceptionTemplate> perceptions = new List<PerceptionTemplate>();
 

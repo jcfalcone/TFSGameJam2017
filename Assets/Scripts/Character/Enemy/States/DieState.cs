@@ -6,6 +6,10 @@ public class DieState : EnemyStateTemplate
 {
     float timeTotal;
 
+    int currSpawnpoint = 0;
+
+    Spawnpoint[] spawnList;
+
     public DieState()
     {
         this.state = StatesAI.Die;
@@ -16,6 +20,10 @@ public class DieState : EnemyStateTemplate
         base.Start();
 
         this.timeTotal = 0;
+
+        this.spawnList = this.parent.GetSpawnpoint();
+
+        this.parent.transform.position = this.spawnList[this.currSpawnpoint].transform.position;
     }
 
     override public void Tick()
@@ -31,9 +39,21 @@ public class DieState : EnemyStateTemplate
     {
         if (this.timeTotal > this.timeInState)
         {
+            this.parent.Init();
+            this.SetCurrSpawnpoint(this.currSpawnpoint + 1);
             return StatesAI.Idle;
         }
 
         return base.NextState();
+    }
+
+    void SetCurrSpawnpoint(int _currSpawnpoint)
+    {
+        this.currSpawnpoint = _currSpawnpoint;
+
+        if (this.currSpawnpoint >= this.spawnList.Length)
+        {
+            this.currSpawnpoint = 0;
+        }
     }
 }

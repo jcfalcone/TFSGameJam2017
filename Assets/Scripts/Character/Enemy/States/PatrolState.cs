@@ -25,8 +25,9 @@ public class PatrolState : EnemyStateTemplate
         this.parent.transform.position = Vector3.Lerp(this.parent.transform.position, this.path[this.currWaypoint].transform.position, this.speed * Time.deltaTime);
 
         //Rotation
-        Vector3 targetDir = this.path[this.currWaypoint].transform.position - this.parent.transform.forward;
-        Vector3 newDir = Vector3.RotateTowards(this.parent.transform.forward, targetDir, this.speed * Time.deltaTime, 0.0F);
+        Vector3 targetDir = this.path[this.currWaypoint].transform.position - this.parent.transform.position;
+        targetDir.y = 0;
+        Vector3 newDir = Vector3.RotateTowards(this.parent.transform.forward, targetDir, this.rotationSpeed * Time.deltaTime, 0.0F);
 
         this.parent.transform.rotation = Quaternion.LookRotation(newDir);
     }
@@ -37,6 +38,11 @@ public class PatrolState : EnemyStateTemplate
 
     public override StatesAI NextState()
     {
+        if (this.parent.GetHealth() <= 0)
+        {
+            return StatesAI.Die;
+        }
+
         StatesAI perceptionState = this.Perceptions();
 
         if (perceptionState != StatesAI.Invalid)
