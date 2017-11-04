@@ -39,7 +39,7 @@ public class Shot : MonoBehaviour
         {
             Debug.Log("... with enemy");
             enemy.TakeDamage(enemy.GetMaxHealth());
-            enemy.Die();
+            //enemy.Die();
         }
 
         ReflectingObject reflectingObject = other.gameObject.GetComponent<ReflectingObject>();
