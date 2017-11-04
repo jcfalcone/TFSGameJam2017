@@ -539,11 +539,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4081525590072672, guid: 56067ba0730bfde43baea739ff576893,
     type: 2}
   m_PrefabInternal: {fileID: 347536541}
---- !u!23 &365331899 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 23216158902528926, guid: 34a7169b14ce33c43bdab9a9e648aef7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1341750253}
 --- !u!1001 &382419567
 Prefab:
   m_ObjectHideFlags: 0
@@ -1475,74 +1470,26 @@ Prefab:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 180171444}
-    - target: {fileID: 1412121311155952, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1156695664286638, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1923770673992554, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1141252331106688, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1645443440808634, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1697552549515554, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1893207948657500, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1720625222179060, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1374791233678976, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1552939654325310, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1280737002894896, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1838871411670056, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 114599435889500318, guid: 34a7169b14ce33c43bdab9a9e648aef7,
+    - target: {fileID: 23067224333077520, guid: 34a7169b14ce33c43bdab9a9e648aef7,
         type: 2}
-      propertyPath: lanternMaterial
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1983369709}
-    - target: {fileID: 114599435889500318, guid: 34a7169b14ce33c43bdab9a9e648aef7,
+      objectReference: {fileID: 2100000, guid: b7b3b557c099a42c784b2f655b457dcf, type: 2}
+    - target: {fileID: 23458882391012690, guid: 34a7169b14ce33c43bdab9a9e648aef7,
         type: 2}
-      propertyPath: stateManager.states.Array.data[0].lanternRender
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1983369709}
-    - target: {fileID: 114599435889500318, guid: 34a7169b14ce33c43bdab9a9e648aef7,
+      objectReference: {fileID: 2100000, guid: 30872a3cbad784b96bade1b57f76078d, type: 2}
+    - target: {fileID: 23000641336921488, guid: 34a7169b14ce33c43bdab9a9e648aef7,
         type: 2}
-      propertyPath: stateManager.states.Array.data[1].lanternRender
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1940141230}
-    - target: {fileID: 114599435889500318, guid: 34a7169b14ce33c43bdab9a9e648aef7,
+      objectReference: {fileID: 2100000, guid: 32bb0e3db7fb94e0281e1d6385b79104, type: 2}
+    - target: {fileID: 23997301766897122, guid: 34a7169b14ce33c43bdab9a9e648aef7,
         type: 2}
-      propertyPath: stateManager.states.Array.data[2].lanternRender
+      propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 365331899}
+      objectReference: {fileID: 2100000, guid: 637ede6e5047f4250a4ba81776a176a8, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
   m_IsPrefabParent: 0
@@ -2351,11 +2298,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4332366261589734, guid: ec78285367f09e04cb4b2bb643562d7a,
     type: 2}
   m_PrefabInternal: {fileID: 1936884279}
---- !u!23 &1940141230 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 23091232085030576, guid: 34a7169b14ce33c43bdab9a9e648aef7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1341750253}
 --- !u!1001 &1963705641
 Prefab:
   m_ObjectHideFlags: 0
@@ -2477,11 +2419,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f096b5ffde3113b4cb1929315058c9b9, type: 2}
   m_IsPrefabParent: 0
---- !u!23 &1983369709 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 23733009361799360, guid: 34a7169b14ce33c43bdab9a9e648aef7,
-    type: 2}
-  m_PrefabInternal: {fileID: 1341750253}
 --- !u!1001 &2050381420
 Prefab:
   m_ObjectHideFlags: 0
