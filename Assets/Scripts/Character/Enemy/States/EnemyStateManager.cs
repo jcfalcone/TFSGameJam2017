@@ -85,6 +85,8 @@ public class EnemyStateManager : StateManagerTemplate
 
         this.states[(int)this.desireState].Start();
 
+        Debug.Log(this.parent.transform.name+" = "+this.currState +" - "+this.desireState);
+
         this.currState = this.desireState;
         this.desireState = EnemyStateTemplate.StatesAI.Invalid;
     }

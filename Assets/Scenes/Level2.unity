@@ -846,11 +846,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 82202662533159422, guid: 589c0b4320b48e148946185601fce412,
-        type: 2}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 589c0b4320b48e148946185601fce412, type: 2}
   m_IsPrefabParent: 0
@@ -1915,6 +1910,10 @@ Prefab:
       propertyPath: spawnpoint.Array.data[0]
       value: 
       objectReference: {fileID: 332208249}
+    - target: {fileID: 1985306688767002, guid: 8ca4e0bfd72474ecc9b94a1327491d0b, type: 2}
+      propertyPath: m_Name
+      value: Reaper 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ca4e0bfd72474ecc9b94a1327491d0b, type: 2}
   m_IsPrefabParent: 0
@@ -2069,7 +2068,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.9117647, g: 0.94888437, b: 1, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.45
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10

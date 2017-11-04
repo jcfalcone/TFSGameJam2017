@@ -5,6 +5,7 @@ using UnityEngine;
 public class EngageState : EnemyStateTemplate 
 {
     float timeTotal;
+    float timeCoolDown;
 
     Transform player;
     Transform bulletSpawn;
@@ -23,6 +24,7 @@ public class EngageState : EnemyStateTemplate
         base.Start();
 
         this.timeTotal = 0;
+        this.timeCoolDown = 0;
 
         this.bulletSpawn = this.parent.GetBulletSpawn();
         this.bulletPrefab = this.parent.GetBulletPrefab();
@@ -44,11 +46,27 @@ public class EngageState : EnemyStateTemplate
     {
         this.timeTotal += Time.deltaTime;
 
-        if (this.timeTotal > this.timeInState)
+        if (this.timeTotal > this.timeInState && this.timeCoolDown == 0)
         {
             GameObject.Instantiate(this.bulletPrefab, this.bulletSpawn.transform.position, this.bulletSpawn.transform.rotation);
             this.timeTotal = 0;
             SoundManager.instance.Play(SoundManager.AudioClips.Fireball);
+
+            this.modelAnimator.SetBool("Attack", false);
+            this.timeCoolDown = 0.01f;
+        }
+
+        if (this.timeCoolDown != 0)
+        {
+            this.timeCoolDown += Time.deltaTime;
+        }
+
+
+        if(this.timeCoolDown > 4f)
+        {
+            this.timeCoolDown = 0;
+
+            this.modelAnimator.SetBool("Attack", true);
         }
 
         Vector3 targetDir = this.player.position - this.parent.transform.position;
