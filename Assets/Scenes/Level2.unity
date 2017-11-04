@@ -1899,16 +1899,6 @@ Prefab:
       propertyPath: spawnpoint.Array.data[0]
       value: 
       objectReference: {fileID: 332208249}
-    - target: {fileID: 114567805018104130, guid: 8ca4e0bfd72474ecc9b94a1327491d0b,
-        type: 2}
-      propertyPath: stateManager.states.Array.data[2].timeInState
-      value: 5.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 114567805018104130, guid: 8ca4e0bfd72474ecc9b94a1327491d0b,
-        type: 2}
-      propertyPath: hitLayers.m_Bits
-      value: 6656
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ca4e0bfd72474ecc9b94a1327491d0b, type: 2}
   m_IsPrefabParent: 0

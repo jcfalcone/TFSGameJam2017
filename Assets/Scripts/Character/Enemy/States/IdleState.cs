@@ -19,6 +19,7 @@ public class IdleState : EnemyStateTemplate
         base.Start();
 
         this.timeTotal = 0;
+        this.modelAnimator.SetFloat("Speed", 0f);
     }
 
     override public void Tick()

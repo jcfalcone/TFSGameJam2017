@@ -719,7 +719,7 @@ MonoBehaviour:
   maxAnglePlayer: 90
   hitLayers:
     serializedVersion: 2
-    m_Bits: 2560
+    m_Bits: 6656
   bulletSpawn: {fileID: 4741756294730184}
   bulletPrefab: {fileID: 1346776649290206, guid: 59a3ca538b316401185e61c4d063a54e,
     type: 2}
@@ -727,28 +727,28 @@ MonoBehaviour:
     states:
     - speed: 0.5
       model: {fileID: 0}
-      modelAnimator: {fileID: 0}
+      modelAnimator: {fileID: 95969991861927324}
       rotationSpeed: 10.3
       pathProximityTolerance: 0
       state: 0
       timeInState: 2
     - speed: 0.5
       model: {fileID: 0}
-      modelAnimator: {fileID: 0}
+      modelAnimator: {fileID: 95969991861927324}
       rotationSpeed: 10.3
       pathProximityTolerance: 0.5
       state: 1
       timeInState: 0
     - speed: 0.5
       model: {fileID: 0}
-      modelAnimator: {fileID: 0}
+      modelAnimator: {fileID: 95969991861927324}
       rotationSpeed: 10.3
       pathProximityTolerance: 0
       state: 2
-      timeInState: 1.28
+      timeInState: 5.07
     - speed: 0
       model: {fileID: 0}
-      modelAnimator: {fileID: 0}
+      modelAnimator: {fileID: 95969991861927324}
       rotationSpeed: 9.7
       pathProximityTolerance: 0
       state: 3

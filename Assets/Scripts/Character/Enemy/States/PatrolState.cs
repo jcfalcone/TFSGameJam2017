@@ -18,6 +18,7 @@ public class PatrolState : EnemyStateTemplate
     public override void Start()
     {
         this.path = this.parent.GetPath();
+        this.modelAnimator.SetFloat("Speed", 1f);
     }
 
     override public void Tick()

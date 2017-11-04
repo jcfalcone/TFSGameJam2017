@@ -25,6 +25,17 @@ public class EngageState : EnemyStateTemplate
         this.bulletSpawn = this.parent.GetBulletSpawn();
         this.bulletPrefab = this.parent.GetBulletPrefab();
         this.player = this.parent.GetPlayer();
+
+        this.modelAnimator.SetBool("Attack", true);
+        this.modelAnimator.SetFloat("Speed", 0f);
+    }
+
+    public override void End()
+    {
+        base.End();
+
+
+        this.modelAnimator.SetBool("Attack", false);
     }
 
     override public void Tick()
