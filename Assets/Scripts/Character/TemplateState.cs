@@ -19,22 +19,32 @@ public class TemplateState
     protected Animator modelAnimator;
 
     [SerializeField]
-    protected SoundManager.AudioClips clip;
+    protected SoundManager.AudioClips clip = SoundManager.AudioClips.Invalid;
 
     virtual public void Init()
     {
-        this.model.SetActive(false);
+        if (this.model)
+        {
+            this.model.SetActive(false);
+        }
     }
 
     virtual public void Start()
     {
         SoundManager.instance.Play(clip);
-        this.model.SetActive(true);
+
+        if (this.model)
+        {
+            this.model.SetActive(true);
+        }
     }
 
     virtual public void End()
     {
-        this.model.SetActive(false);
+        if (this.model)
+        {
+            this.model.SetActive(false);
+        }
     }
 
     virtual public void Tick()

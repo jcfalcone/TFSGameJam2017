@@ -22,6 +22,12 @@ public class PlayerStateManager : StateManagerTemplate
         this.states.Add(new DefaultState());
         this.states.Add(new IntangibleState());
         this.states.Add(new SolidState());
+        this.states.Add(new DeadState());
+    }
+
+    public void test()
+    {
+        this.states.Add(new DeadState());
     }
 
     public void Init(Player _parent)

@@ -29,11 +29,11 @@ public class PlayerStateTemplate : TemplateState
     bool isMovable = true;
 
     [SerializeField]
-    [Range(0f, 2f)]
+    [Range(0f, 200f)]
     protected float staminaRecoverRate;
 
     [SerializeField]
-    [Range(0f, 2f)]
+    [Range(0f, 200f)]
     protected float staminaBurnRate;
 
     virtual public bool IsMovable()

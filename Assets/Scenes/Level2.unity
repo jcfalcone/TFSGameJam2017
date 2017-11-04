@@ -846,6 +846,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 82202662533159422, guid: 589c0b4320b48e148946185601fce412,
+        type: 2}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 589c0b4320b48e148946185601fce412, type: 2}
   m_IsPrefabParent: 0
@@ -940,7 +945,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4296226046573964, guid: 7e074261d56dc453e89ad9148f0d37d7, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 15.5
+      value: 20.91
       objectReference: {fileID: 0}
     - target: {fileID: 4296226046573964, guid: 7e074261d56dc453e89ad9148f0d37d7, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1100,6 +1105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portal: {fileID: 1853275092}
   pumpkins: 3
+  levelAudio: 0
 --- !u!1001 &1018309810
 Prefab:
   m_ObjectHideFlags: 0
@@ -1156,13 +1162,18 @@ Prefab:
       objectReference: {fileID: 639080451}
     - target: {fileID: 114567805018104130, guid: 8ca4e0bfd72474ecc9b94a1327491d0b,
         type: 2}
-      propertyPath: stateManager.states.Array.data[2].timeInState
-      value: 5.07
+      propertyPath: hitLayers.m_Bits
+      value: 6656
       objectReference: {fileID: 0}
     - target: {fileID: 114567805018104130, guid: 8ca4e0bfd72474ecc9b94a1327491d0b,
         type: 2}
-      propertyPath: hitLayers.m_Bits
-      value: 6656
+      propertyPath: stateManager.states.Array.data[2].timeInState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114567805018104130, guid: 8ca4e0bfd72474ecc9b94a1327491d0b,
+        type: 2}
+      propertyPath: stateManager.states.Array.data[2].clip
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ca4e0bfd72474ecc9b94a1327491d0b, type: 2}
@@ -1765,6 +1776,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 23733009361799360, guid: 34a7169b14ce33c43bdab9a9e648aef7,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 1587084437}
     - target: {fileID: 114599435889500318, guid: 34a7169b14ce33c43bdab9a9e648aef7,
         type: 2}
       propertyPath: spawnPoint
@@ -2176,6 +2192,89 @@ Transform:
   m_PrefabParentObject: {fileID: 4192637114616470, guid: f096b5ffde3113b4cb1929315058c9b9,
     type: 2}
   m_PrefabInternal: {fileID: 15917607}
+--- !u!21 &1587084437
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Glass (Instance)
+  m_Shader: {fileID: 4800000, guid: f5348096d957b4e42a41c646274b4fad, type: 3}
+  m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: ea4696440a96c4b23a3d95c751ebd4ff, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 52a2125fd5e8a4125a07db763d9ed7fe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 2800000, guid: dc3e905f0005e4a47b9cf64861880d46, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _node_6956:
+        m_Texture: {fileID: 2800000, guid: 52a2125fd5e8a4125a07db763d9ed7fe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _FillAmount: 0.25109136
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Intensity: 4.51
+    - _Intensity2: 5.1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    - _node_5642: 6.3
+    m_Colors:
+    - _Color: {r: 0.188462, g: 0.18836506, b: 0.19117647, a: 1}
+    - _Color2: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &1610561900
 Prefab:
   m_ObjectHideFlags: 0

@@ -10,6 +10,8 @@ public class EngageState : EnemyStateTemplate
     Transform bulletSpawn;
     GameObject bulletPrefab;
 
+    Vector3 vectorUp = Vector3.up;
+
     public EngageState()
     {
         this.state = StatesAI.Engage;
@@ -46,6 +48,7 @@ public class EngageState : EnemyStateTemplate
         {
             GameObject.Instantiate(this.bulletPrefab, this.bulletSpawn.transform.position, this.bulletSpawn.transform.rotation);
             this.timeTotal = 0;
+            SoundManager.instance.Play(SoundManager.AudioClips.Fireball);
         }
 
         Vector3 targetDir = this.player.position - this.parent.transform.position;
@@ -53,7 +56,7 @@ public class EngageState : EnemyStateTemplate
         Vector3 newDir = Vector3.RotateTowards(this.parent.transform.forward, targetDir, this.rotationSpeed * Time.deltaTime, 0.0F);
         this.parent.transform.rotation = Quaternion.LookRotation(newDir);
 
-        this.bulletSpawn.LookAt(this.player);
+        this.bulletSpawn.LookAt(this.player.transform.position + this.vectorUp);
     }
 
     override public void FixedTick()

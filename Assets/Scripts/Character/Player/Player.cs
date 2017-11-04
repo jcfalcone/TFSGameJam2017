@@ -35,6 +35,7 @@ public class Player : BaseCharacter
     Renderer currentLanternRender;
     Material currentLanternMaterial;
 
+
     void Start ()
     {
         this.stateManager.Init(this);
@@ -61,6 +62,8 @@ public class Player : BaseCharacter
         if (this.isDead)
         {
             this.stateManager.SetState(PlayerStateTemplate.States.Dead);
+
+            this.stateManager.Tick();
             return;
         }
         
@@ -145,7 +148,11 @@ public class Player : BaseCharacter
     public void SetLanternRender( Renderer render)
     {
         this.currentLanternRender = render;
-        this.currentLanternMaterial = render.material;
+
+        if (render)
+        {
+            this.currentLanternMaterial = render.material;
+        }
     }
 
     void FlipMesh()

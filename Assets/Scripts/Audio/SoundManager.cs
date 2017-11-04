@@ -5,7 +5,11 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour {
 
     // Audio Clips in game
-    public enum AudioClips {
+    public enum AudioClips 
+    {
+
+        Invalid = -1,
+
         //MUSIC
         GameMusic1, GameMusic2, GameMusic3, GameMusic4, GameMusic5, GameMusic6, GameMusic7,
         //PLAYER
@@ -51,6 +55,11 @@ public class SoundManager : MonoBehaviour {
     // Calling Reference: SoundManager.instance.Play(SoundManager.AudioClips.*** clip***)
     public void Play (AudioClips clip)
     {
+        if (clip == AudioClips.Invalid)
+        {
+            return;
+        }
+
         // MUSIC: 
         if (clip == AudioClips.GameMusic1 || clip == AudioClips.GameMusic2 || 
             clip == AudioClips.GameMusic3 || clip == AudioClips.GameMusic4 || 

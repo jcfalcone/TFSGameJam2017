@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] Portal portal;
     [SerializeField] int pumpkins;
+    [SerializeField] SoundManager.AudioClips levelAudio;
     
 	void Awake ()
     {
@@ -16,6 +17,11 @@ public class LevelManager : MonoBehaviour
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+    }
+
+    void Start()
+    {
+        SoundManager.instance.Play(this.levelAudio);
     }
 	
     public void LightUpPumpikin()
