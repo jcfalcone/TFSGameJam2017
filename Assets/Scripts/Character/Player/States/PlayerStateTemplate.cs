@@ -19,6 +19,9 @@ public class PlayerStateTemplate : TemplateState
     [SerializeField]
     protected States state;
 
+    [Header("Reference")]
+    [SerializeField]
+    protected Renderer lanternRender;
 
     [Header("Movement")]
     [SerializeField]
@@ -45,5 +48,10 @@ public class PlayerStateTemplate : TemplateState
     virtual public float GetStaminaBurn()
     {
         return this.staminaBurnRate;
+    }
+
+    virtual public Renderer GetLanternRender()
+    {
+        return this.lanternRender;
     }
 }

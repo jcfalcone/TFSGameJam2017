@@ -31,7 +31,10 @@ public class Player : BaseCharacter
         Walk,
         Dead
     }
+
     Animations currentAnimation;
+    Renderer currentLanternRender;
+    Material currentLanternMaterial;
 
     void Start ()
     {
@@ -68,6 +71,12 @@ public class Player : BaseCharacter
     void FixedUpdate()
     {
         rb.AddForce(-transform.up * gravityForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
+    }
+
+    void LateUpdate()
+    {
+        float percAmount = this.stamina / 100f;
+        this.currentLanternMaterial.SetFloat("_FillAmount", 0.2f * percAmount + 0.25f);
     }
 
     void CheckInput()
@@ -131,6 +140,12 @@ public class Player : BaseCharacter
     public void SetIsMovable( bool condition ) { this.isMovable = condition; }
 
     public void SetupAnimator( Animator newAnim ) { this.anim = newAnim; }
+
+    public void SetLanternRender( Renderer render)
+    {
+        this.currentLanternRender = render;
+        this.currentLanternMaterial = render.material;
+    }
 
     void FlipMesh()
     {

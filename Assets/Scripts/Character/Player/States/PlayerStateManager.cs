@@ -90,6 +90,7 @@ public class PlayerStateManager : StateManagerTemplate
         this.parent.SetStaminaRecoverRate(this.GetStaminaRecover());
         this.parent.SetStaminaBurnRate(this.GetStaminaBurn());
         this.parent.SetMovePseed(this.GetSpeed());
+        this.parent.SetLanternRender(this.GetLanternRender());
     }
 
     public void SetState(PlayerStateTemplate.States _State)
@@ -150,5 +151,15 @@ public class PlayerStateManager : StateManagerTemplate
         }
 
         return this.states[(int)this.currState].GetStaminaBurn();
+    }
+
+    public Renderer GetLanternRender()
+    {
+        if (this.currState == PlayerStateTemplate.States.Invalid)
+        {
+            return null;
+        }
+
+        return this.states[(int)this.currState].GetLanternRender();
     }
 }
