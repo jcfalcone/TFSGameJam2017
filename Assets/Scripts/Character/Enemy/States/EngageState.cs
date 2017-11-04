@@ -38,6 +38,7 @@ public class EngageState : EnemyStateTemplate
         }
 
         Vector3 targetDir = this.player.position - this.parent.transform.position;
+        targetDir.y = 0;
         Vector3 newDir = Vector3.RotateTowards(this.parent.transform.forward, targetDir, this.rotationSpeed * Time.deltaTime, 0.0F);
         this.parent.transform.rotation = Quaternion.LookRotation(newDir);
 

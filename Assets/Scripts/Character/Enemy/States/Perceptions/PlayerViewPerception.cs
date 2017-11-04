@@ -20,7 +20,6 @@ public class PlayerViewPerception : PerceptionTemplate
 
             if (playerAngle > -this.parent.GetMinAngle() && playerAngle < this.parent.GetMaxAngle())
             {
-
                 RaycastHit hit;
 
                 if (Physics.Linecast(this.parent.transform.position, player.transform.position, out hit, this.parent.GetHitLayer()))

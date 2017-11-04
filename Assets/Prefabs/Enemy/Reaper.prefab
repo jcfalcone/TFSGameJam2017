@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 114567805018104130}
   m_Layer: 0
   m_Name: Reaper
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -728,7 +728,7 @@ MonoBehaviour:
     - speed: 0.5
       model: {fileID: 0}
       modelAnimator: {fileID: 0}
-      rotationSpeed: 0
+      rotationSpeed: 10.3
       pathProximityTolerance: 0
       state: 0
       timeInState: 2
@@ -742,7 +742,7 @@ MonoBehaviour:
     - speed: 0.5
       model: {fileID: 0}
       modelAnimator: {fileID: 0}
-      rotationSpeed: 0
+      rotationSpeed: 10.3
       pathProximityTolerance: 0
       state: 2
       timeInState: 1.28
