@@ -73,7 +73,7 @@ public class Player : BaseCharacter
 
         rb.velocity = ((transform.forward * this.axisX) + (transform.up * this.axisY)) * this.moveSpeed * Time.deltaTime;
 
-        rb.AddForce(-transform.up * gravityForce * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        rb.AddForce(-transform.up * gravityForce * Time.deltaTime, ForceMode.VelocityChange);
     }
     
 

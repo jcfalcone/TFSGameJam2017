@@ -13,6 +13,21 @@ public class SwitchTarget : MonoBehaviour {
 	[SerializeField]
 	private float _distanceTolerance;
 
+    bool isRun = false;
+
+    void Update()
+    {
+        if(isRun)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _destination.position, _speed * Time.deltaTime);
+        }
+    }
+
+    public void Activate()
+    {
+        isRun = true;
+    }
+
 	public IEnumerator MoveAffectedObject()
     {
         Rigidbody rb = GetComponent<Rigidbody>();

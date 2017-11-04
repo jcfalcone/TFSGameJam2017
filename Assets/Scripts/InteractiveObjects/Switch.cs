@@ -16,7 +16,7 @@ public class Switch : MonoBehaviour
 
     void OnTriggerStay(Collider coll)
     {
-        if (coll.tag == "Player")
+        if (coll.gameObject.CompareTag("PlayerCollider"))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -35,7 +35,8 @@ public class Switch : MonoBehaviour
     {
         foreach (SwitchTarget target in _affectedObjects)
         {
-            StartCoroutine(target.MoveAffectedObject());
+            target.Activate();
+            //StartCoroutine(target.MoveAffectedObject());
         }
     }
 

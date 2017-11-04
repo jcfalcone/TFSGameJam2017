@@ -7,6 +7,9 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance = null;
 
+    bool isPaused;
+    [SerializeField] GameObject pauseCanvas;
+
     [SerializeField] Portal portal;
     [SerializeField] int pumpkins;
     [SerializeField] SoundManager.AudioClips levelAudio;
@@ -23,7 +26,26 @@ public class LevelManager : MonoBehaviour
     {
         SoundManager.instance.Play(this.levelAudio);
     }
-	
+
+    void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.P) || Input.GetKeyUp(KeyCode.Escape))
+        {
+            if(Time.timeScale == 0.0f)
+            {
+                Time.timeScale = 1.0f;
+                isPaused = false;
+                pauseCanvas.SetActive(false);
+            }
+            else
+            {
+                Time.timeScale = 0.0f;
+                isPaused = true;
+                pauseCanvas.SetActive(true);
+            }
+        }
+    }
+
     public void LightUpPumpikin()
     {
         this.pumpkins--;
@@ -39,4 +61,6 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public bool GetIsPaused() { return isPaused; }
 }
