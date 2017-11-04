@@ -5,7 +5,6 @@ using UnityEngine;
 public class Candles : MonoBehaviour
 {
     [SerializeField] GameObject fire;
-    //[SerializeField] LevelManager levelManager;
 
     void OnTriggerEnter(Collider c)
     {
@@ -13,6 +12,7 @@ public class Candles : MonoBehaviour
         {
             fire.SetActive(true);
             //SoundManager.instance.Play(SoundManager.AudioClips.MatchStrike);
+            LevelManager.instance.LightUpPumpikin();
             Destroy(c.gameObject);
             Destroy(this);
         }

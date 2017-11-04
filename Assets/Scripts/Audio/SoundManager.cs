@@ -9,11 +9,11 @@ public class SoundManager : MonoBehaviour {
         //MUSIC
         GameMusic1, GameMusic2, GameMusic3, GameMusic4, GameMusic5, GameMusic6, GameMusic7,
         //PLAYER
-        Jump, Death, inTangible, Solid, Ricochet,
+        Death, inTangible, Solid, Ricochet, Whoosh, 
         //GRIM
         GrimLaugh, Fireball,
         //SFX
-        LanternLit, LanternLaugh, RopeSnap, Thunder, MatchStrike, Switch, 
+        LanternLit, LanternLaugh, RopeSnap, Thunder, MatchStrike, Switch, Explosion, Clapping, 
         //UI
         Button,
         //AMBIANCE
@@ -95,17 +95,21 @@ public class SoundManager : MonoBehaviour {
         }
 
         // PLAYER: 
-        if (clip == AudioClips.Jump || clip == AudioClips.Death)
+        if (clip == AudioClips.Whoosh || clip == AudioClips.inTangible || clip == AudioClips.Solid)
         {
             AudioSource player = PlayerSource.GetComponent<AudioSource>();
             SoundManagerChannel smc = PlayerSource.GetComponent<SoundManagerChannel>();
 
-            if (clip==AudioClips.Jump) {
+            if (clip==AudioClips.Whoosh) {
                 player.clip = smc.Clips[0];
             }
-            if (clip == AudioClips.Death)
+            if (clip == AudioClips.inTangible)
             {
                 player.clip = smc.Clips[1];
+            }
+            if (clip == AudioClips.Solid)
+            {
+                player.clip = smc.Clips[2];
             }
 
             player.Play();
@@ -133,7 +137,9 @@ public class SoundManager : MonoBehaviour {
         // SOUND EFFECTS: 
         if (clip == AudioClips.LanternLit || clip == AudioClips.LanternLaugh || 
             clip == AudioClips.RopeSnap || clip == AudioClips.Thunder || 
-            clip == AudioClips.MatchStrike || clip == AudioClips.Switch)
+            clip == AudioClips.MatchStrike || clip == AudioClips.Switch ||
+            clip == AudioClips.Explosion || clip == AudioClips.Clapping ||
+            clip == AudioClips.Ricochet)
         {
             AudioSource sfx = sfxSource.GetComponent<AudioSource>();
             SoundManagerChannel smc = sfxSource.GetComponent<SoundManagerChannel>();
@@ -160,6 +166,18 @@ public class SoundManager : MonoBehaviour {
             else if (clip == AudioClips.Switch)
             {
                 sfx.clip = smc.Clips[5];
+            }
+            else if (clip == AudioClips.Explosion)
+            {
+                sfx.clip = smc.Clips[6];
+            }
+            else if (clip == AudioClips.Clapping)
+            {
+                sfx.clip = smc.Clips[7];
+            }
+            else if (clip == AudioClips.Ricochet)
+            {
+                sfx.clip = smc.Clips[8];
             }
 
             sfx.Play();
