@@ -13,7 +13,6 @@ public class Player : BaseCharacter
     [SerializeField] [Range(50, 150)] float gravityForce;
     [SerializeField] [Range(100, 500)] float moveSpeed;
     [SerializeField] float turnRate;
-    [SerializeField] [Range(0.1f, 1f)] float slowMotion;
 
     bool isMovable;
     bool isFacingRight;
@@ -188,30 +187,6 @@ public class Player : BaseCharacter
     public void SetMovePseed( float newMoveSpeed ) { this.moveSpeed = newMoveSpeed; }
     public void SetStaminaBurnRate(float newBurnRate) { this.staminaBurnRate = newBurnRate; }
     public void SetStaminaRecoverRate( float newRecoverRate ) { this.staminaRecoverRate = newRecoverRate; }
-
-    void OnTriggerEnter(Collider c)
-    {
-        if(c.gameObject.CompareTag("Projectile"))
-        {
-            Time.timeScale = slowMotion;
-        }
-    }
-
-    void OnTriggerStay(Collider c)
-    {
-        if (c.gameObject.CompareTag("Projectile"))
-        {
-            Time.timeScale = slowMotion;
-        }
-    }
-
-    void OnTriggerExit(Collider c)
-    {
-        if (c.gameObject.CompareTag("Projectile"))
-        {
-            Time.timeScale = 1.0f;
-        }
-    }
 
     public PlayerStateTemplate.States GetState()
     {
