@@ -28,6 +28,7 @@ public class Switch : MonoBehaviour
     void InitializeSwitch()
     {
         // animations, sounds, etc
+        SoundManager.instance.Play(SoundManager.AudioClips.Switch);
     }
 
     void ExecuteSwitch()
