@@ -163,7 +163,7 @@ public class Player : BaseCharacter
 
     public void SpendStamina()
     {
-        this.stamina -= this.staminaBurnRate;
+        this.stamina -= this.staminaBurnRate * Time.deltaTime;
 
         if(this.stamina <= 0.0f)
         {
@@ -174,7 +174,7 @@ public class Player : BaseCharacter
 
     public void RecoverStamina()
     {
-        this.stamina += this.staminaRecoverRate;
+        this.stamina += this.staminaRecoverRate * Time.deltaTime;
 
         if(this.stamina >= 100.0f)
         {

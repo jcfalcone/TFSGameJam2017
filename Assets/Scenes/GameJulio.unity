@@ -531,26 +531,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081525590072672, guid: 56067ba0730bfde43baea739ff576893, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2.4217844
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081525590072672, guid: 56067ba0730bfde43baea739ff576893, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2.4217856
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081525590072672, guid: 56067ba0730bfde43baea739ff576893, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2.4217856
-      objectReference: {fileID: 0}
-    - target: {fileID: 4081525590072672, guid: 56067ba0730bfde43baea739ff576893, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 111.511
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 56067ba0730bfde43baea739ff576893, type: 2}
   m_IsPrefabParent: 0
@@ -1398,6 +1378,11 @@ Prefab:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 180171444}
+    - target: {fileID: 114599435889500318, guid: 34a7169b14ce33c43bdab9a9e648aef7,
+        type: 2}
+      propertyPath: slowMotion
+      value: 0.45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
   m_IsPrefabParent: 0
@@ -2212,6 +2197,11 @@ Prefab:
         type: 2}
       propertyPath: m_Shadows.m_Type
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114132256432680508, guid: d40c79a12545513448d601dae2830471,
+        type: 2}
+      propertyPath: nextLevelName
+      value: Level2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d40c79a12545513448d601dae2830471, type: 2}
