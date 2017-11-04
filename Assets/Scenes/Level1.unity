@@ -821,7 +821,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4296226046573964, guid: 7e074261d56dc453e89ad9148f0d37d7, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 15.5
+      value: 20.91
       objectReference: {fileID: 0}
     - target: {fileID: 4296226046573964, guid: 7e074261d56dc453e89ad9148f0d37d7, type: 2}
       propertyPath: m_LocalRotation.x
@@ -893,6 +893,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portal: {fileID: 1853275092}
   pumpkins: 1
+  levelAudio: 0
 --- !u!1001 &1024137805
 Prefab:
   m_ObjectHideFlags: 0
@@ -1453,26 +1454,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114599435889500318, guid: 34a7169b14ce33c43bdab9a9e648aef7,
-        type: 2}
-      propertyPath: spawnPoint
-      value: 
-      objectReference: {fileID: 180171444}
-    - target: {fileID: 114599435889500318, guid: 34a7169b14ce33c43bdab9a9e648aef7,
-        type: 2}
-      propertyPath: stateManager.states.Array.data[0].clip
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 114599435889500318, guid: 34a7169b14ce33c43bdab9a9e648aef7,
-        type: 2}
-      propertyPath: stateManager.states.Array.data[1].clip
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114599435889500318, guid: 34a7169b14ce33c43bdab9a9e648aef7,
-        type: 2}
-      propertyPath: stateManager.states.Array.data[2].clip
-      value: 9
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
   m_IsPrefabParent: 0
@@ -1711,7 +1692,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 0.9117647, g: 0.94888437, b: 1, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 0.45
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
