@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33520140047960736}
   - component: {fileID: 23972934691413056}
   m_Layer: 0
-  m_Name: tombstone_low
+  m_Name: tombBacon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

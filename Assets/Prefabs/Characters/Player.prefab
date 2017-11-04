@@ -2702,7 +2702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stateManager:
     states:
-    - speed: 200
+    - speed: 300
       model: {fileID: 1368656438948844}
       modelAnimator: {fileID: 95145883152755074}
       clip: -1
@@ -2711,7 +2711,7 @@ MonoBehaviour:
       isMovable: 1
       staminaRecoverRate: 27
       staminaBurnRate: 80
-    - speed: 300
+    - speed: 500
       model: {fileID: 1720625222179060}
       modelAnimator: {fileID: 95150289720646852}
       clip: -1
