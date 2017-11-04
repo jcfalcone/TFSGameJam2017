@@ -140,12 +140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48579728bba7c4b259e6497dc16d73a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifetime: 20
-  _speed: 1
-  _rotationSpeed: 30
+  _lifetime: 5
+  _speed: 1.5
+  _rotationSpeed: 90
   _damage: 1
-  _toleranceDistanceForIdle: 0.01
-  _toleranceTimeforIdle: 2
+  _toleranceDistanceForIdle: 0.02
+  _toleranceTimeforIdle: 1
 --- !u!135 &135651270545497486
 SphereCollider:
   m_ObjectHideFlags: 1
