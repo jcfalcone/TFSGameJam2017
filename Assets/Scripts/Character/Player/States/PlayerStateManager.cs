@@ -162,4 +162,9 @@ public class PlayerStateManager : StateManagerTemplate
 
         return this.states[(int)this.currState].GetLanternRender();
     }
+
+    public PlayerStateTemplate.States GetState()
+    {
+        return this.currState;
+    }
 }

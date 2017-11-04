@@ -189,7 +189,7 @@ public class Player : BaseCharacter
 
     void OnTriggerEnter(Collider c)
     {
-        if(c.gameObject.name == "Projectile")
+        if(c.gameObject.CompareTag("Projectile"))
         {
             Time.timeScale = slowMotion;
         }
@@ -197,7 +197,7 @@ public class Player : BaseCharacter
 
     void OnTriggerStay(Collider c)
     {
-        if (c.gameObject.name == "Projectile")
+        if (c.gameObject.CompareTag("Projectile"))
         {
             Time.timeScale = slowMotion;
         }
@@ -205,9 +205,14 @@ public class Player : BaseCharacter
 
     void OnTriggerExit(Collider c)
     {
-        if (c.gameObject.name == "Projectile")
+        if (c.gameObject.CompareTag("Projectile"))
         {
             Time.timeScale = 1.0f;
         }
+    }
+
+    public PlayerStateTemplate.States GetState()
+    {
+        return this.stateManager.GetState();
     }
 }

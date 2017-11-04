@@ -9,21 +9,11 @@ public class Candles : MonoBehaviour
 
     void OnTriggerEnter(Collider c)
     {
-        if(c.gameObject.name == "Lantern")
+        if(c.gameObject.CompareTag("Projectile"))
         {
             fire.SetActive(true);
-            SoundManager.instance.Play(SoundManager.AudioClips.MatchStrike);
-            Destroy(this);
-        }
-    }
-
-    void OnTriggerStay(Collider c)
-    {
-        if(Input.GetKey(KeyCode.E))
-        {
-            // Call Level Manager to add 1 to objectives
-            fire.SetActive(true);
-            SoundManager.instance.Play(SoundManager.AudioClips.MatchStrike);
+            //SoundManager.instance.Play(SoundManager.AudioClips.MatchStrike);
+            Destroy(c.gameObject);
             Destroy(this);
         }
     }

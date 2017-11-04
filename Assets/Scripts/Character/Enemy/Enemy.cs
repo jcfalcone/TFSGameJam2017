@@ -24,7 +24,7 @@ public class Enemy : BaseCharacter
     private Spawnpoint[] spawnpoint;
 
     [SerializeField]
-    [Range(0f, 10f)]
+    [Range(0f, 100f)]
     float minRangePlayer;
 
     [SerializeField]
