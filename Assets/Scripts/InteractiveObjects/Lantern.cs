@@ -32,9 +32,9 @@ public class Lantern : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider c)
+    void OnCollisionEnter(Collision c)
     {
-        if(c.gameObject.name == "Projectile")
+        if(c.gameObject.CompareTag("Projectile"))
         {
             GetComponent<BoxCollider>().enabled = false;
 
