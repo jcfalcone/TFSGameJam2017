@@ -136,12 +136,10 @@ Shader "Falcone.io/GlassLantern" {
                 float node_8382_if_leA = step(_FillAmount,i.uv0.r);
                 float node_8382_if_leB = step(i.uv0.r,_FillAmount);
                 float node_8382 = lerp((node_8382_if_leA*0.0)+(node_8382_if_leB*1.0),1.0,node_8382_if_leA*node_8382_if_leB);
-                float3 node_3107 = ((_MainTex_var.rgb*_Color.rgb)*(1.0 - node_8382));
-                float3 diffuseColor = node_3107;
+                float3 diffuseColor = ((_MainTex_var.rgb*_Color.rgb)*(1.0 - node_8382));
                 float3 diffuse = (directDiffuse + indirectDiffuse) * diffuseColor;
 ////// Emissive:
-                float3 node_228 = (node_8382*_Color2.rgb);
-                float3 emissive = (node_228*_Intensity2);
+                float3 emissive = ((node_8382*_Color2.rgb)*_Intensity2);
 /// Final Color:
                 float3 finalColor = diffuse + emissive;
                 return fixed4(finalColor,1);
@@ -228,8 +226,7 @@ Shader "Falcone.io/GlassLantern" {
                 float node_8382_if_leA = step(_FillAmount,i.uv0.r);
                 float node_8382_if_leB = step(i.uv0.r,_FillAmount);
                 float node_8382 = lerp((node_8382_if_leA*0.0)+(node_8382_if_leB*1.0),1.0,node_8382_if_leA*node_8382_if_leB);
-                float3 node_3107 = ((_MainTex_var.rgb*_Color.rgb)*(1.0 - node_8382));
-                float3 diffuseColor = node_3107;
+                float3 diffuseColor = ((_MainTex_var.rgb*_Color.rgb)*(1.0 - node_8382));
                 float3 diffuse = directDiffuse * diffuseColor;
 /// Final Color:
                 float3 finalColor = diffuse;
@@ -297,12 +294,10 @@ Shader "Falcone.io/GlassLantern" {
                 float node_8382_if_leA = step(_FillAmount,i.uv0.r);
                 float node_8382_if_leB = step(i.uv0.r,_FillAmount);
                 float node_8382 = lerp((node_8382_if_leA*0.0)+(node_8382_if_leB*1.0),1.0,node_8382_if_leA*node_8382_if_leB);
-                float3 node_228 = (node_8382*_Color2.rgb);
-                o.Emission = (node_228*_Intensity2);
+                o.Emission = ((node_8382*_Color2.rgb)*_Intensity2);
                 
                 float4 _MainTex_var = tex2D(_MainTex,TRANSFORM_TEX(i.uv0, _MainTex));
-                float3 node_3107 = ((_MainTex_var.rgb*_Color.rgb)*(1.0 - node_8382));
-                float3 diffColor = node_3107;
+                float3 diffColor = ((_MainTex_var.rgb*_Color.rgb)*(1.0 - node_8382));
                 o.Albedo = diffColor;
                 
                 return UnityMetaFragment( o );
