@@ -369,8 +369,9 @@ GameObject:
   - component: {fileID: 4832699273192094}
   - component: {fileID: 65001281875496876}
   - component: {fileID: 54789153793843166}
+  - component: {fileID: 114917265103260574}
   m_Layer: 0
-  m_Name: lantern2
+  m_Name: Lantern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1105,8 +1106,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 8.098753, z: 1}
-  m_Center: {x: 0, y: -3.96111, z: 0}
+  m_Size: {x: 1, y: 7.6002097, z: 1}
+  m_Center: {x: 0, y: -3.711839, z: 0}
+--- !u!114 &114917265103260574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1763896748612012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cafcf0a57fbfb29458c319e535906cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 198413975958491926}
 --- !u!114 &114962379628292932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -10931,7 +10944,7 @@ ParticleSystem:
   simulationSpeed: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
