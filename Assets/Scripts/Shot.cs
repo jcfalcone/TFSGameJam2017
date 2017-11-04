@@ -69,6 +69,7 @@ public class Shot : MonoBehaviour
         if (other.gameObject.tag == "Enemy" || (other.gameObject.tag == "Player" && other.gameObject.GetComponent<Player>().GetState() != PlayerStateTemplate.States.Solid))
         {
             other.gameObject.GetComponent<BaseCharacter>().TakeDamage(_damage);
+            Destroy(gameObject);
         }
 
         if (other.gameObject.layer == LayerMask.NameToLayer("ShotReflection"))

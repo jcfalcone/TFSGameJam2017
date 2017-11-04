@@ -11,9 +11,8 @@ public class Candles : MonoBehaviour
         if(c.gameObject.CompareTag("Projectile"))
         {
             fire.SetActive(true);
-            //SoundManager.instance.Play(SoundManager.AudioClips.MatchStrike);
+            SoundManager.instance.Play(SoundManager.AudioClips.MatchStrike);
             LevelManager.instance.LightUpPumpikin();
-            Destroy(c.gameObject);
             Destroy(this);
         }
     }
