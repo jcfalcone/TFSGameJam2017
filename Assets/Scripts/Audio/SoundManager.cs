@@ -13,7 +13,7 @@ public class SoundManager : MonoBehaviour {
         //GRIM
         GrimLaugh, Fireball,
         //SFX
-        LanternLit, LanternLaugh, RopeSnap, Thunder,
+        LanternLit, LanternLaugh, RopeSnap, Thunder, MatchStrike, Switch, 
         //UI
         Button,
         //AMBIANCE
@@ -52,7 +52,10 @@ public class SoundManager : MonoBehaviour {
     public void Play (AudioClips clip)
     {
         // MUSIC: 
-        if (clip == AudioClips.GameMusic1 || clip == AudioClips.GameMusic2 || clip == AudioClips.GameMusic3 || clip == AudioClips.GameMusic4 || clip == AudioClips.GameMusic5 || clip == AudioClips.GameMusic6 || clip == AudioClips.GameMusic7)
+        if (clip == AudioClips.GameMusic1 || clip == AudioClips.GameMusic2 || 
+            clip == AudioClips.GameMusic3 || clip == AudioClips.GameMusic4 || 
+            clip == AudioClips.GameMusic5 || clip == AudioClips.GameMusic6 || 
+            clip == AudioClips.GameMusic7)
         {
 
             AudioSource music = MusicSource.GetComponent<AudioSource>();
@@ -87,6 +90,7 @@ public class SoundManager : MonoBehaviour {
             {
                 music.clip = smc.Clips[6];
             }
+
             music.Play();
         }
 
@@ -103,6 +107,7 @@ public class SoundManager : MonoBehaviour {
             {
                 player.clip = smc.Clips[1];
             }
+
             player.Play();
         }
 
@@ -121,11 +126,14 @@ public class SoundManager : MonoBehaviour {
             {
                 grim.clip = smc.Clips[1];
             }
+
             grim.Play();
         }
 
         // SOUND EFFECTS: 
-        if (clip == AudioClips.LanternLit || clip == AudioClips.LanternLaugh || clip == AudioClips.RopeSnap || clip == AudioClips.Thunder)
+        if (clip == AudioClips.LanternLit || clip == AudioClips.LanternLaugh || 
+            clip == AudioClips.RopeSnap || clip == AudioClips.Thunder || 
+            clip == AudioClips.MatchStrike || clip == AudioClips.Switch)
         {
             AudioSource sfx = sfxSource.GetComponent<AudioSource>();
             SoundManagerChannel smc = sfxSource.GetComponent<SoundManagerChannel>();
@@ -145,6 +153,15 @@ public class SoundManager : MonoBehaviour {
             {
                 sfx.clip = smc.Clips[3];
             }
+            else if (clip == AudioClips.MatchStrike)
+            {
+                sfx.clip = smc.Clips[4];
+            }
+            else if (clip == AudioClips.Switch)
+            {
+                sfx.clip = smc.Clips[5];
+            }
+
             sfx.Play();
         }
         
@@ -158,6 +175,7 @@ public class SoundManager : MonoBehaviour {
             {
                 UI.clip = smc.Clips[0];
             }
+
             UI.Play();
         }
 
@@ -175,13 +193,15 @@ public class SoundManager : MonoBehaviour {
             {
                 ambiance.clip = smc.Clips[1];
             }
+
             ambiance.Play();
         }
     }
 
+    /* DEBUGGING
     private void Update()
     {
-        //Music Preview (#)
+        //Music Preview (#1-7)
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 Play(AudioClips.GameMusic1);
@@ -210,7 +230,7 @@ public class SoundManager : MonoBehaviour {
             {
                 Play(AudioClips.GameMusic7);
             }
-    }
+    } */
 }
 
 

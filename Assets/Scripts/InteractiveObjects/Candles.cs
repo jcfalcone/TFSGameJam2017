@@ -13,6 +13,8 @@ public class Candles : MonoBehaviour
         {
             // Call Level Manager to add 1 to objectives
             fire.SetActive(true);
+            SoundManager.instance.Play(SoundManager.AudioClips.MatchStrike);
+            Destroy(this);
         }
     }
 }
