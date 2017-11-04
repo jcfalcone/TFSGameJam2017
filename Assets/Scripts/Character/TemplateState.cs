@@ -18,6 +18,9 @@ public class TemplateState
     [SerializeField]
     protected Animator modelAnimator;
 
+    [SerializeField]
+    protected SoundManager.AudioClips clip;
+
     virtual public void Init()
     {
         this.model.SetActive(false);
@@ -25,6 +28,7 @@ public class TemplateState
 
     virtual public void Start()
     {
+        SoundManager.instance.Play(clip);
         this.model.SetActive(true);
     }
 
