@@ -8,6 +8,7 @@ public class Player : BaseCharacter
 
     [SerializeField] Transform spawnPoint;
     [SerializeField] Transform mesh;
+    [SerializeField] ParticleSystem aura;
 
     [SerializeField] [Range(50, 150)] float gravityForce;
     [SerializeField] [Range(100, 500)] float moveSpeed;
@@ -30,7 +31,7 @@ public class Player : BaseCharacter
         Walk,
         Dead
     }
-    int currentAnimation;
+    Animations currentAnimation;
 
     void Start ()
     {
@@ -74,36 +75,40 @@ public class Player : BaseCharacter
         this.axisX = 0;
         this.axisY = 0;
 
-        
+        /* CHECK INPUTS */
+        this.currentAnimation = (int)Animations.Idle;
         if (this.isMovable)
         {
             if (Input.GetKey(KeyCode.W) && this.canFloat)
             {
                 this.axisY = 1;
-                this.currentAnimation = (int)Animations.Walk;
+                this.currentAnimation = Animations.Walk;
                 SpendStamina();
             }
 
             if (Input.GetKey(KeyCode.D))
             {
                 this.axisX = 1;
-                this.currentAnimation = (int)Animations.Walk;
+                this.currentAnimation = Animations.Walk;
                 this.isFacingRight = true;
             }
 
             if (Input.GetKey(KeyCode.A))
             {
                 this.axisX = -1;
-                this.currentAnimation = (int)Animations.Walk;
+                this.currentAnimation = Animations.Walk;
                 this.isFacingRight = false;
             }
-
-            if(!Input.anyKey) this.currentAnimation = (int)Animations.Idle;
         }
 
 
         /* CHANGE STATES FOR PLAYER */
-        
+
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
+        {
+            this.aura.Play();
+        }
+
         if (Input.GetMouseButton(0))
         {
             this.stateManager.SetState(PlayerStateTemplate.States.Intangible);
@@ -120,7 +125,7 @@ public class Player : BaseCharacter
         FlipMesh();
 
         if (anim)
-            anim.SetInteger("State", currentAnimation);
+            anim.SetInteger("State", (int)currentAnimation);
     }
 
     public void SetIsMovable( bool condition ) { this.isMovable = condition; }
