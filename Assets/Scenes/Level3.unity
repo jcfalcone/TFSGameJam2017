@@ -1830,7 +1830,7 @@ MonoBehaviour:
   pauseCanvas: {fileID: 1374528292}
   portal: {fileID: 1853275092}
   pumpkins: 3
-  levelAudio: 0
+  levelAudio: 2
 --- !u!1001 &1018309810
 Prefab:
   m_ObjectHideFlags: 0

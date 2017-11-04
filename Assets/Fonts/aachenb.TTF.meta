@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: e9c99e7946e3c4759833444e4ff4aaee
+timeCreated: 1509827375
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Aachen BT
+  fontNames:
+  - Aachen BT
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 38d87639d62a6406baa1f24ffc5542a5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1409,8 +1409,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Left mouse button will allow Reaper fire to pass through you.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 924f68d8e05234c7797a9b74b73cdd90, type: 2}
+  m_sharedMaterial: {fileID: 21070349230933036, guid: 924f68d8e05234c7797a9b74b73cdd90,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2550,8 +2551,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Tutorial
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 924f68d8e05234c7797a9b74b73cdd90, type: 2}
+  m_sharedMaterial: {fileID: 21070349230933036, guid: 924f68d8e05234c7797a9b74b73cdd90,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2575,7 +2577,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 107.4
+  m_fontSize: 97.45
   m_fontSizeBase: 130
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2721,8 +2723,9 @@ MonoBehaviour:
   m_text: Right mouse button will transform your spirit to metal, able to deflect
     Reaper fire.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 924f68d8e05234c7797a9b74b73cdd90, type: 2}
+  m_sharedMaterial: {fileID: 21070349230933036, guid: 924f68d8e05234c7797a9b74b73cdd90,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2892,8 +2895,9 @@ MonoBehaviour:
   m_text: Right mouse button will transform your spirit to metal, able to deflect
     Reaper fire.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 924f68d8e05234c7797a9b74b73cdd90, type: 2}
+  m_sharedMaterial: {fileID: 21070349230933036, guid: 924f68d8e05234c7797a9b74b73cdd90,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3452,8 +3456,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Left mouse button will allow Reaper fire to pass through you.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 924f68d8e05234c7797a9b74b73cdd90, type: 2}
+  m_sharedMaterial: {fileID: 21070349230933036, guid: 924f68d8e05234c7797a9b74b73cdd90,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4247,11 +4252,6 @@ Prefab:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 180171444}
-    - target: {fileID: 23733009361799360, guid: 34a7169b14ce33c43bdab9a9e648aef7,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a3c7dfa523d044b4da77f1ad9c333451, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
   m_IsPrefabParent: 0
@@ -4833,8 +4833,9 @@ MonoBehaviour:
   m_text: Welcome to Jack-O-Portal! Your soul has escaped the grasps of the Grim Reaper,
     help light the Jack-O-Lanterns to open portals and be freed!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 924f68d8e05234c7797a9b74b73cdd90, type: 2}
+  m_sharedMaterial: {fileID: 21070349230933036, guid: 924f68d8e05234c7797a9b74b73cdd90,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5683,8 +5684,9 @@ MonoBehaviour:
   m_text: "Your lantern indicates how much energy you have remaining, \nwhich replenishes
     over time."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 924f68d8e05234c7797a9b74b73cdd90, type: 2}
+  m_sharedMaterial: {fileID: 21070349230933036, guid: 924f68d8e05234c7797a9b74b73cdd90,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6414,8 +6416,9 @@ MonoBehaviour:
     Pressing ''W'' will make your character float upwards, but beware your energy
     levels!'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 924f68d8e05234c7797a9b74b73cdd90, type: 2}
+  m_sharedMaterial: {fileID: 21070349230933036, guid: 924f68d8e05234c7797a9b74b73cdd90,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7086,8 +7089,9 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: skip
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 924f68d8e05234c7797a9b74b73cdd90, type: 2}
+  m_sharedMaterial: {fileID: 21070349230933036, guid: 924f68d8e05234c7797a9b74b73cdd90,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7111,7 +7115,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 25.05
+  m_fontSize: 26.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
