@@ -11,7 +11,8 @@ public class PlayerStateTemplate : TemplateState
         Invalid = -1,
         Default = 0,
         Intangible,
-        Solid
+        Solid,
+        Dead
     }
 
 
