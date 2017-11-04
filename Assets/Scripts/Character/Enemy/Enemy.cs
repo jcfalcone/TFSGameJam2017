@@ -3,19 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+// [RequireComponent(typeof(Collider))]
+// [RequireComponent(typeof(Rigidbody))]
+// [RequireComponent(typeof(Animator))]
+// [RequireComponent(typeof(Patrol))]
+// [RequireComponent(typeof(Detection))]
+// [RequireComponent(typeof(NavMeshAgent))]
+
 public class Enemy : BaseCharacter
 {
     private const float MAX_HEALTH = 1;
 
     [SerializeField]
-    private GameObject _shot;
-    [SerializeField]
     private float _shotInterval;
-    private Patrol _patrol;
-    public bool seeingPlayer = false;
 
     [SerializeField]
     private Waypoint[] path;
+
+    [SerializeField]
+    private Spawnpoint[] spawnpoint;
 
     [SerializeField]
     [Range(0f, 10f)]
@@ -29,21 +35,29 @@ public class Enemy : BaseCharacter
     [Range(0, 360)]
     float maxAnglePlayer;
 
-    Transform player;
+    [Header("Shoot")]
+    [SerializeField]
+    private LayerMask hitLayers;
 
     [SerializeField]
-    private Transform shotSpawnPoint;
+    private Transform bulletSpawn;
+
+    [SerializeField]
+    private GameObject bulletPrefab;
+
+    [Header("State Manager")]
+    [SerializeField]
+    EnemyStateManager stateManager;
+
+    Transform player;
+
+    public bool die;
 
     void Awake()
     {
-        SetStamina(0);
-        SetMaxHealth(MAX_HEALTH);
-        SetHealth(MAX_HEALTH);
+        this.Init();
+
         SetupRigidbody();
-
-        // _patrol = GetComponent<Patrol>();
-
-        // _patrol.GeneratePath();
 
         GameObject tempPlayer = GameObject.FindGameObjectWithTag("Player");
 
@@ -51,54 +65,39 @@ public class Enemy : BaseCharacter
         {
             this.player = tempPlayer.transform;
         }
+
+        this.stateManager.Init(this);
+        this.stateManager.SetState(EnemyStateTemplate.StatesAI.Idle);
+        //StartCoroutine(KillTest());
     }
 
     void Update()
     {
-        // TODO replace with proper stateManagement triggers once available
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            // shoot immediately, and then again after a certain time
-            InvokeRepeating("Shoot", 0, _shotInterval);
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            CancelInvoke("Shoot");
-        }
+        this.stateManager.Tick();
 
-        // // TODO replace with proper Detection and stateManagement once available
-        // if (seeingPlayer)
-        // {
-        //     _patrol.StopPatrolling();
-        // }
-        // else
-        // {
-        //     _patrol.PatrolAround();
-        // }
+        if (die)
+        {
+            KillTest();
+            die = false;
+        }
     }
 
-    void Shoot()
+    public void Init()
     {
-        // generate and reparent shot
-        GameObject shot = Instantiate(_shot, shotSpawnPoint.position, shotSpawnPoint.rotation);
-        shot.transform.parent = shotSpawnPoint;
-    }
 
-    public void Die()
-    {
-        // TODO add animation, SFX, etc
-
-        // reset the Enemy info
-        CancelInvoke("Shoot");
-        // TODO include other data, such as state
-
-        // have the EnemySpawner determine how to Respawn the Enemy
-        EnemySpawner.instance.Respawn(gameObject);
+        SetStamina(0);
+        SetMaxHealth(MAX_HEALTH);
+        SetHealth(MAX_HEALTH);
     }
 
     public Waypoint[] GetPath()
     {
         return this.path;
+    }
+
+    public Spawnpoint[] GetSpawnpoint()
+    {
+        return this.spawnpoint;
     }
 
     public Transform GetPlayer()
@@ -119,5 +118,26 @@ public class Enemy : BaseCharacter
     public float GetMaxAngle()
     {
         return this.maxAnglePlayer;
+    }
+
+    public Transform GetBulletSpawn()
+    {
+        return this.bulletSpawn;
+    }
+
+    public GameObject GetBulletPrefab()
+    {
+        return this.bulletPrefab;
+    }
+
+    public LayerMask GetHitLayer()
+    {
+        return this.hitLayers;
+    }
+
+
+    void KillTest()
+    {
+        this.health = 0;
     }
 }

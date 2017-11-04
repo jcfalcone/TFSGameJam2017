@@ -32,6 +32,11 @@ public class IdleState : EnemyStateTemplate
 
     public override StatesAI NextState()
     {
+        if (this.parent.GetHealth() <= 0)
+        {
+            return StatesAI.Die;
+        }
+
         StatesAI perceptionState = this.Perceptions();
 
         if (perceptionState != StatesAI.Invalid)
