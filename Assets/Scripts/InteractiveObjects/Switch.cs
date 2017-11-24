@@ -2,10 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+enum LEVER_STATES
+{
+    OFFLINE,
+    ONLINE,
+    Size
+}
+
 public class Switch : MonoBehaviour
 {
-    [SerializeField]
-    private List<SwitchTarget> _affectedObjects;
+    [SerializeField] GameObject lever;
+    [SerializeField] List<Material> leverMaterials;
+
+    [SerializeField] List<SwitchTarget> _affectedObjects;
 
     void Activate()
     {
@@ -20,6 +29,9 @@ public class Switch : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                lever.GetComponent<Renderer>().material = leverMaterials[(int)LEVER_STATES.ONLINE];
+                transform.rotation = Quaternion.Euler(180.0f, 90.0f, 0.0f);
+                GetComponent<BoxCollider>().enabled = false;
                 Activate();
             }
         }

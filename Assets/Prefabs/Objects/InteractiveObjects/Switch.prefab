@@ -148,7 +148,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8206430f914514e0da93b9d838b62ad9, type: 2}
+  - {fileID: 2100000, guid: 8cd27d5d241de68408b5403ce76aceaa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -204,5 +204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 676d09af4c7dd4ba2a287eede48ebbd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lever: {fileID: 1642025524469182}
+  leverMaterials:
+  - {fileID: 2100000, guid: 8cd27d5d241de68408b5403ce76aceaa, type: 2}
+  - {fileID: 2100000, guid: ee3065e2691fe5b419a98d611091ac7b, type: 2}
   _affectedObjects:
   - {fileID: 0}
