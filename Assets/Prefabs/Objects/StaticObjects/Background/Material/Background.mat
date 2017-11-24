@@ -23,7 +23,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Clouds:
-        m_Texture: {fileID: 2800000, guid: 31ddc4fe48fd1472ab39357c657cf0ba, type: 3}
+        m_Texture: {fileID: 2800000, guid: f444e89403cfe4f9bb756c68df5d9400, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -92,9 +92,9 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _IntensityCloud: 0.01
+    - _IntensityCloud: 0.1
     - _IntensityMoon: 9.7
-    - _IntensityShadowCloud: 1
+    - _IntensityShadowCloud: 8
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
