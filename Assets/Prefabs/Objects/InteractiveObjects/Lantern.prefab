@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 4366177832127358}
   - component: {fileID: 33734123407111300}
   - component: {fileID: 23898590056200238}
+  - component: {fileID: 114773692862337160}
   m_Layer: 0
   m_Name: Object001
   m_TagString: Untagged
@@ -566,7 +567,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1748307004914076}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 11.43, z: 23.684736}
+  m_LocalPosition: {x: 0, y: -0.59369373, z: 14.80764}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4001979342193702}
@@ -1124,6 +1125,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 7.6002097, z: 1}
   m_Center: {x: 0, y: -3.711839, z: 0}
+--- !u!114 &114773692862337160
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1670537141614020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664a02ef838d44823ab01499ec987893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objRender: {fileID: 23898590056200238}
+  colorSpeed: 2
+  colors:
+  - {r: 2.2, g: 1.1613588, b: 0.048529197, a: 1}
 --- !u!114 &114917265103260574
 MonoBehaviour:
   m_ObjectHideFlags: 1
