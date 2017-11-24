@@ -3888,6 +3888,16 @@ Prefab:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 180171444}
+    - target: {fileID: 199573130122127176, guid: 34a7169b14ce33c43bdab9a9e648aef7,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 1070508415
+      objectReference: {fileID: 0}
+    - target: {fileID: 199573130122127176, guid: 34a7169b14ce33c43bdab9a9e648aef7,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34a7169b14ce33c43bdab9a9e648aef7, type: 2}
   m_IsPrefabParent: 0

@@ -18,10 +18,13 @@ public class Player : BaseCharacter
     bool isFacingRight;
     bool canFloat;
 
+    bool canChange = true;
+
     int axisX;
     int axisY;
 
     [SerializeField] float staminaBurnRate;
+    [SerializeField] float staminaBurnInStandRate;
     [SerializeField] float staminaRecoverRate;
 
     enum Animations : int
@@ -117,22 +120,29 @@ public class Player : BaseCharacter
 
         /* CHANGE STATES FOR PLAYER */
 
-        if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
         {
-            this.aura.Play();
+            this.canChange = true;
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0) && this.stamina > 0 && this.canChange)
         {
             this.stateManager.SetState(PlayerStateTemplate.States.Intangible);
+            SpendStamina();
         }
-        else if(Input.GetMouseButton(1))
+        else if(Input.GetMouseButton(1) && this.stamina > 0 && this.canChange)
         {
             this.stateManager.SetState(PlayerStateTemplate.States.Solid);
+            SpendStamina();
         }
         else
         {
             this.stateManager.SetState(PlayerStateTemplate.States.Default);
+        }
+
+        if (this.stamina <= 0)
+        {
+            this.canChange = false;
         }
 
         FlipMesh();
@@ -198,5 +208,10 @@ public class Player : BaseCharacter
     public PlayerStateTemplate.States GetState()
     {
         return this.stateManager.GetState();
+    }
+
+    public void PlayAura()
+    {
+        this.aura.Play();
     }
 }
