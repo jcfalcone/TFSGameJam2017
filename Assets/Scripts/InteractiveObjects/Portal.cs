@@ -16,6 +16,8 @@ public class Portal : MonoBehaviour
     void OnCollisionEnter(Collision c)
     {
         if (c.gameObject.CompareTag("Player"))
-            SceneManager.LoadScene(nextLevelName);
+        {
+            StartCoroutine(SceneFader.instance.FadeAndLoadScene(SceneFader.FadeDirection.In, nextLevelName, FindObjectOfType<LevelManager>().transitionCanvas));
+        }
     }
 }

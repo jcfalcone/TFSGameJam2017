@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,13 +14,17 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Portal portal;
     [SerializeField] int pumpkins;
     [SerializeField] SoundManager.AudioClips levelAudio;
-    
-	void Awake ()
+    [SerializeField] public Image transitionCanvas;
+    [SerializeField] GameObject _tutorialCanvas;
+
+    void Awake()
     {
         if (instance == null)
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+
+        StartCoroutine(SceneFader.instance.Fade(SceneFader.FadeDirection.Out, transitionCanvas));
     }
 
     void Start()
@@ -29,20 +34,33 @@ public class LevelManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.P) || Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.P) || Input.GetKeyUp(KeyCode.Escape))
         {
-            if(Time.timeScale == 0.0f)
+            PauseGame();
+        }
+
+        if (_tutorialCanvas)
+        {
+            if (_tutorialCanvas.activeSelf == false && transitionCanvas.gameObject.activeSelf == false)
             {
-                Time.timeScale = 1.0f;
-                isPaused = false;
-                pauseCanvas.SetActive(false);
+                _tutorialCanvas.SetActive(true);
             }
-            else
-            {
-                Time.timeScale = 0.0f;
-                isPaused = true;
-                pauseCanvas.SetActive(true);
-            }
+        }
+    }
+
+    public void PauseGame()
+    {
+        if (Time.timeScale == 0.0f)
+        {
+            Time.timeScale = 1.0f;
+            isPaused = false;
+            pauseCanvas.SetActive(false);
+        }
+        else
+        {
+            Time.timeScale = 0.0f;
+            isPaused = true;
+            pauseCanvas.SetActive(true);
         }
     }
 
@@ -50,7 +68,7 @@ public class LevelManager : MonoBehaviour
     {
         this.pumpkins--;
 
-        if(this.pumpkins == 0)
+        if (this.pumpkins == 0)
         {
             portal.ActivatePortal();
             Destroy(gameObject);
