@@ -8,14 +8,6 @@ public class UIManager : MonoBehaviour
 {
     public enum CanvasTypes { StartMenu, CheckQuit, Level, PauseMenu }
 
-
-    //     [SerializeField]
-    //     private GameObject _optionsScreenCanvas;
-    //     [SerializeField]
-    //     private GameObject _creditsScreenCanvas;
-    //     [SerializeField]
-    //     private GameObject _pauseCanvas;
-
     [SerializeField]
     private GameObject _startScreenCanvas;
     private GameObject _btnStart;
@@ -29,6 +21,9 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private string _startScene;
+
+    [SerializeField]
+    private Image _transitionCanvas;
 
     void Update()
     {
@@ -72,12 +67,6 @@ public class UIManager : MonoBehaviour
             _btnStart.GetComponent<Button>().onClick.AddListener(SceneController.instance.StartGame);
         }
 
-        // _btnQuit = GameObject.Find("btnCredits");
-        // if (_btnQuit)
-        // {
-        //     _btnStart.GetComponent<Button>().onClick.AddListener(SceneController.instance.ShowCredits);
-        // }
-
         _btnQuit = GameObject.Find("btnQuit");
         if (_btnQuit)
         {
@@ -117,7 +106,7 @@ public class UIManager : MonoBehaviour
     {
         if (_startScene != "")
         {
-            SceneManager.LoadScene(_startScene);
+            StartCoroutine(SceneFader.instance.FadeAndLoadScene(SceneFader.FadeDirection.In, _startScene, _transitionCanvas));
         }
         else
         {
