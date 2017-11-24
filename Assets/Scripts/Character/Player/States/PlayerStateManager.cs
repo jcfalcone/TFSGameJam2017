@@ -97,6 +97,7 @@ public class PlayerStateManager : StateManagerTemplate
         this.parent.SetStaminaBurnRate(this.GetStaminaBurn());
         this.parent.SetMovePseed(this.GetSpeed());
         this.parent.SetLanternRender(this.GetLanternRender());
+        this.parent.PlayAura();
     }
 
     public void SetState(PlayerStateTemplate.States _State)
