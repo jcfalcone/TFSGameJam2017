@@ -1199,19 +1199,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1399923847556774, guid: e0fa12e179d5f48989c66322cf653a27, type: 2}
-      propertyPath: m_Name
-      value: LevelManager
-      objectReference: {fileID: 0}
     - target: {fileID: 114323601789935904, guid: e0fa12e179d5f48989c66322cf653a27,
         type: 2}
       propertyPath: portal
       value: 
       objectReference: {fileID: 1485586431}
-    - target: {fileID: 114323601789935904, guid: e0fa12e179d5f48989c66322cf653a27,
-        type: 2}
-      propertyPath: pumpkins
-      value: 3
+    - target: {fileID: 1932693503927360, guid: e0fa12e179d5f48989c66322cf653a27, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0fa12e179d5f48989c66322cf653a27, type: 2}

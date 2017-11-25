@@ -8,7 +8,9 @@ public class LanterExplosion : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
+        explosion.transform.parent = null;
         explosion.Play();
+        Destroy(explosion, 3f);
         Destroy(gameObject, 0.5f);
     }
 }

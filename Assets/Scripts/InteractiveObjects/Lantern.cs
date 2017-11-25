@@ -39,6 +39,8 @@ public class Lantern : MonoBehaviour
             GetComponent<BoxCollider>().enabled = false;
 
             CheckNodeInRope(c.gameObject);
+
+            Destroy(c.gameObject, 0.5f);
         }
     }
 

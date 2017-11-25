@@ -8,13 +8,17 @@ public class Candles : MonoBehaviour
 
     void OnTriggerEnter(Collider c)
     {
-        if(c.gameObject.CompareTag("Projectile"))
+        if(c.gameObject.CompareTag("Projectile") || c.gameObject.CompareTag("Lantern"))
         {
             fire.SetActive(true);
             SoundManager.instance.Play(SoundManager.AudioClips.MatchStrike);
             LevelManager.instance.LightUpPumpikin();
-            Destroy(c.gameObject);
             Destroy(this);
+
+            if(c.gameObject.CompareTag("Projectile"))
+            {
+                Destroy(c.gameObject);
+            }
         }
     }
 }
