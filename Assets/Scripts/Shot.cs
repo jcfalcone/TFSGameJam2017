@@ -56,7 +56,8 @@ public class Shot : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
+                Ricochet180Degrees();
+                //Destroy(gameObject);
             }
         }
     }
