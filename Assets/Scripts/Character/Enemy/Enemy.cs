@@ -35,6 +35,9 @@ public class Enemy : BaseCharacter
     [Range(0, 360)]
     float maxAnglePlayer;
 
+    [SerializeField]
+    AudioSource audio;
+
     [Header("Shoot")]
     [SerializeField]
     private LayerMask hitLayers;
@@ -133,6 +136,11 @@ public class Enemy : BaseCharacter
     public LayerMask GetHitLayer()
     {
         return this.hitLayers;
+    }
+
+    public AudioSource GetAudioSource()
+    {
+        return this.audio;
     }
 
 

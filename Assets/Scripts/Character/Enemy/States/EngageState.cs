@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EngageState : EnemyStateTemplate 
+public class EngageState : EnemyStateTemplate
 {
     float timeTotal;
     float timeCoolDown;
@@ -12,6 +12,8 @@ public class EngageState : EnemyStateTemplate
     GameObject bulletPrefab;
 
     Vector3 vectorUp = Vector3.up;
+
+    AudioSource audio;
 
     public EngageState()
     {
@@ -29,6 +31,7 @@ public class EngageState : EnemyStateTemplate
         this.bulletSpawn = this.parent.GetBulletSpawn();
         this.bulletPrefab = this.parent.GetBulletPrefab();
         this.player = this.parent.GetPlayer();
+        this.audio = this.parent.GetAudioSource();
 
         this.modelAnimator.SetBool("Attack", true);
         this.modelAnimator.SetFloat("Speed", 0f);
@@ -50,7 +53,8 @@ public class EngageState : EnemyStateTemplate
         {
             GameObject.Instantiate(this.bulletPrefab, this.bulletSpawn.transform.position, this.bulletSpawn.transform.rotation);
             this.timeTotal = 0;
-            SoundManager.instance.Play(SoundManager.AudioClips.Fireball);
+            audio.clip = SoundManager.instance.GetClip(SoundManager.AudioClips.Fireball);
+            audio.Play();
 
             this.modelAnimator.SetBool("Attack", false);
             this.timeCoolDown = 0.01f;
@@ -62,7 +66,7 @@ public class EngageState : EnemyStateTemplate
         }
 
 
-        if(this.timeCoolDown > 4f)
+        if (this.timeCoolDown > 4f)
         {
             this.timeCoolDown = 0;
 

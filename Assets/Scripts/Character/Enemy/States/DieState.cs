@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DieState : EnemyStateTemplate 
+public class DieState : EnemyStateTemplate
 {
     float timeTotal;
 
     int currSpawnpoint = 0;
 
     Spawnpoint[] spawnList;
+
+    AudioSource audio;
 
     public DieState()
     {
@@ -24,6 +26,9 @@ public class DieState : EnemyStateTemplate
         this.spawnList = this.parent.GetSpawnpoint();
 
         this.parent.transform.position = this.spawnList[this.currSpawnpoint].transform.position;
+        this.audio = this.parent.GetAudioSource();
+        audio.clip = SoundManager.instance.GetClip(SoundManager.AudioClips.GrimLaugh);
+        audio.Play();
     }
 
     override public void Tick()

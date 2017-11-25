@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour {
+public class SoundManager : MonoBehaviour
+{
 
     // Audio Clips in game
-    public enum AudioClips 
+    public enum AudioClips
     {
 
         Invalid = -1,
@@ -13,11 +14,11 @@ public class SoundManager : MonoBehaviour {
         //MUSIC
         GameMusic1, GameMusic2, GameMusic3, GameMusic4, GameMusic5, GameMusic6, GameMusic7,
         //PLAYER
-        Death, inTangible, Solid, Ricochet, Whoosh, 
+        Death, inTangible, Solid, Ricochet, Whoosh,
         //GRIM
         GrimLaugh, Fireball,
         //SFX
-        LanternLit, LanternLaugh, RopeSnap, Thunder, MatchStrike, Switch, Explosion, Clapping, 
+        LanternLit, LanternLaugh, RopeSnap, Thunder, MatchStrike, Switch, Explosion, Clapping,
         //UI
         Button,
         //AMBIANCE
@@ -35,9 +36,9 @@ public class SoundManager : MonoBehaviour {
     public static SoundManager instance = null;
 
 
-	// Use this for initialization
-	void Awake () {
-
+    // Use this for initialization
+    void Awake()
+    {
         //Instance creation
         if (instance == null)
         {
@@ -50,10 +51,10 @@ public class SoundManager : MonoBehaviour {
 
         //Keep music consistent through scenes
         DontDestroyOnLoad(gameObject);
-        }
+    }
 
     // Calling Reference: SoundManager.instance.Play(SoundManager.AudioClips.*** clip***)
-    public void Play (AudioClips clip)
+    public void Play(AudioClips clip)
     {
         if (clip == AudioClips.Invalid)
         {
@@ -61,168 +62,213 @@ public class SoundManager : MonoBehaviour {
         }
 
         // MUSIC: 
-        if (clip == AudioClips.GameMusic1 || clip == AudioClips.GameMusic2 || 
-            clip == AudioClips.GameMusic3 || clip == AudioClips.GameMusic4 || 
-            clip == AudioClips.GameMusic5 || clip == AudioClips.GameMusic6 || 
+        else if (clip == AudioClips.GameMusic1 || clip == AudioClips.GameMusic2 ||
+            clip == AudioClips.GameMusic3 || clip == AudioClips.GameMusic4 ||
+            clip == AudioClips.GameMusic5 || clip == AudioClips.GameMusic6 ||
             clip == AudioClips.GameMusic7)
         {
-
             AudioSource music = MusicSource.GetComponent<AudioSource>();
-            SoundManagerChannel smc = MusicSource.GetComponent<SoundManagerChannel>();
 
-  
-            if (clip == AudioClips.GameMusic1)
-            {
-                music.clip = smc.Clips[0];
-            }
-            else if (clip == AudioClips.GameMusic2)
-            {
-                music.clip = smc.Clips[1];
-            }
-            else if (clip == AudioClips.GameMusic3)
-            {
-                music.clip = smc.Clips[2];
-            }
-            else if (clip == AudioClips.GameMusic4)
-            {
-                music.clip = smc.Clips[3];
-            }
-            else if (clip == AudioClips.GameMusic5)
-            {
-                music.clip = smc.Clips[4];
-            }
-            else if (clip == AudioClips.GameMusic6)
-            {
-                music.clip = smc.Clips[5];
-            }
-            else if (clip == AudioClips.GameMusic7)
-            {
-                music.clip = smc.Clips[6];
-            }
+            music.clip = GetClip(clip);
 
             music.Play();
         }
 
         // PLAYER: 
-        if (clip == AudioClips.Whoosh || clip == AudioClips.inTangible || clip == AudioClips.Solid)
+        else if (clip == AudioClips.Whoosh || clip == AudioClips.inTangible || clip == AudioClips.Solid)
         {
             AudioSource player = PlayerSource.GetComponent<AudioSource>();
-            SoundManagerChannel smc = PlayerSource.GetComponent<SoundManagerChannel>();
 
-            if (clip==AudioClips.Whoosh) {
-                player.clip = smc.Clips[0];
-            }
-            if (clip == AudioClips.inTangible)
-            {
-                player.clip = smc.Clips[1];
-            }
-            if (clip == AudioClips.Solid)
-            {
-                player.clip = smc.Clips[2];
-            }
+            player.clip = GetClip(clip);
 
             player.Play();
         }
 
-
         // GRIM: 
-        if (clip == AudioClips.GrimLaugh || clip == AudioClips.Fireball)
+        else if (clip == AudioClips.GrimLaugh || clip == AudioClips.Fireball)
         {
             AudioSource grim = GrimSource.GetComponent<AudioSource>();
-            SoundManagerChannel smc = GrimSource.GetComponent<SoundManagerChannel>();
 
-            if (clip == AudioClips.GrimLaugh)
-            {
-                grim.clip = smc.Clips[0];
-            }
-            if (clip == AudioClips.Fireball)
-            {
-                grim.clip = smc.Clips[1];
-            }
+            grim.clip = GetClip(clip);
 
             grim.Play();
         }
 
         // SOUND EFFECTS: 
-        if (clip == AudioClips.LanternLit || clip == AudioClips.LanternLaugh || 
-            clip == AudioClips.RopeSnap || clip == AudioClips.Thunder || 
+        else if (clip == AudioClips.LanternLit || clip == AudioClips.LanternLaugh ||
+            clip == AudioClips.RopeSnap || clip == AudioClips.Thunder ||
             clip == AudioClips.MatchStrike || clip == AudioClips.Switch ||
             clip == AudioClips.Explosion || clip == AudioClips.Clapping ||
             clip == AudioClips.Ricochet)
         {
             AudioSource sfx = sfxSource.GetComponent<AudioSource>();
-            SoundManagerChannel smc = sfxSource.GetComponent<SoundManagerChannel>();
 
-            if (clip==AudioClips.LanternLit) {
-                sfx.clip = smc.Clips[0];
-            }
-            else if (clip == AudioClips.LanternLaugh)
-            {
-                sfx.clip = smc.Clips[1];
-            }
-            else if (clip == AudioClips.RopeSnap)
-            {
-                sfx.clip = smc.Clips[2];
-            }
-            else if (clip == AudioClips.Thunder)
-            {
-                sfx.clip = smc.Clips[3];
-            }
-            else if (clip == AudioClips.MatchStrike)
-            {
-                sfx.clip = smc.Clips[4];
-            }
-            else if (clip == AudioClips.Switch)
-            {
-                sfx.clip = smc.Clips[5];
-            }
-            else if (clip == AudioClips.Explosion)
-            {
-                sfx.clip = smc.Clips[6];
-            }
-            else if (clip == AudioClips.Clapping)
-            {
-                sfx.clip = smc.Clips[7];
-            }
-            else if (clip == AudioClips.Ricochet)
-            {
-                sfx.clip = smc.Clips[8];
-            }
+            sfx.clip = GetClip(clip);
 
             sfx.Play();
         }
-        
+
         // UI: 
-        if (clip == AudioClips.Button)
+        else if (clip == AudioClips.Button)
         {
             AudioSource UI = UISource.GetComponent<AudioSource>();
-            SoundManagerChannel smc = UISource.GetComponent<SoundManagerChannel>();
 
-            if (clip == AudioClips.Button)
-            {
-                UI.clip = smc.Clips[0];
-            }
+            UI.clip = GetClip(clip);
 
             UI.Play();
         }
 
         // Ambiance
-        if (clip == AudioClips.Rain || clip == AudioClips.Wind)
+        else if (clip == AudioClips.Rain || clip == AudioClips.Wind)
         {
             AudioSource ambiance = AmbianceSource.GetComponent<AudioSource>();
-            SoundManagerChannel smc = AmbianceSource.GetComponent<SoundManagerChannel>();
 
-            if (clip == AudioClips.Rain)
-            {
-                ambiance.clip = smc.Clips[0];
-            }
-            else if (clip == AudioClips.Wind)
-            {
-                ambiance.clip = smc.Clips[1];
-            }
+            ambiance.clip = GetClip(clip);
 
             ambiance.Play();
         }
+    }
+
+    public AudioClip GetClip(AudioClips clipName)
+    {
+        SoundManagerChannel smc = null;
+
+        if (clipName == AudioClips.GameMusic1 || clipName == AudioClips.GameMusic2 ||
+            clipName == AudioClips.GameMusic3 || clipName == AudioClips.GameMusic4 ||
+            clipName == AudioClips.GameMusic5 || clipName == AudioClips.GameMusic6 ||
+            clipName == AudioClips.GameMusic7)
+        {
+            smc = MusicSource.GetComponent<SoundManagerChannel>();
+
+            if (clipName == AudioClips.GameMusic1)
+            {
+                return smc.Clips[0];
+            }
+            else if (clipName == AudioClips.GameMusic2)
+            {
+                return smc.Clips[1];
+            }
+            else if (clipName == AudioClips.GameMusic3)
+            {
+                return smc.Clips[2];
+            }
+            else if (clipName == AudioClips.GameMusic4)
+            {
+                return smc.Clips[3];
+            }
+            else if (clipName == AudioClips.GameMusic5)
+            {
+                return smc.Clips[4];
+            }
+            else if (clipName == AudioClips.GameMusic6)
+            {
+                return smc.Clips[5];
+            }
+            else if (clipName == AudioClips.GameMusic7)
+            {
+                return smc.Clips[6];
+            }
+        }
+        else if (clipName == AudioClips.Whoosh || clipName == AudioClips.inTangible || clipName == AudioClips.Solid)
+        {
+            smc = PlayerSource.GetComponent<SoundManagerChannel>();
+
+            if (clipName == AudioClips.Whoosh)
+            {
+                return smc.Clips[0];
+            }
+            else if (clipName == AudioClips.inTangible)
+            {
+                return smc.Clips[1];
+            }
+            else if (clipName == AudioClips.Solid)
+            {
+                return smc.Clips[2];
+            }
+        }
+        else if (clipName == AudioClips.GrimLaugh || clipName == AudioClips.Fireball)
+        {
+            smc = GrimSource.GetComponent<SoundManagerChannel>();
+
+            if (clipName == AudioClips.GrimLaugh)
+            {
+                return smc.Clips[0];
+            }
+            else if (clipName == AudioClips.Fireball)
+            {
+                return smc.Clips[1];
+            }
+        }
+        else if (clipName == AudioClips.LanternLit || clipName == AudioClips.LanternLaugh ||
+            clipName == AudioClips.RopeSnap || clipName == AudioClips.Thunder ||
+            clipName == AudioClips.MatchStrike || clipName == AudioClips.Switch ||
+            clipName == AudioClips.Explosion || clipName == AudioClips.Clapping ||
+            clipName == AudioClips.Ricochet)
+        {
+            smc = sfxSource.GetComponent<SoundManagerChannel>();
+
+            if (clipName == AudioClips.LanternLit)
+            {
+                return smc.Clips[0];
+            }
+            else if (clipName == AudioClips.LanternLaugh)
+            {
+                return smc.Clips[1];
+            }
+            else if (clipName == AudioClips.RopeSnap)
+            {
+                return smc.Clips[2];
+            }
+            else if (clipName == AudioClips.Thunder)
+            {
+                return smc.Clips[3];
+            }
+            else if (clipName == AudioClips.MatchStrike)
+            {
+                return smc.Clips[4];
+            }
+            else if (clipName == AudioClips.Switch)
+            {
+                return smc.Clips[5];
+            }
+            else if (clipName == AudioClips.Explosion)
+            {
+                return smc.Clips[6];
+            }
+            else if (clipName == AudioClips.Clapping)
+            {
+                return smc.Clips[7];
+            }
+            else if (clipName == AudioClips.Ricochet)
+            {
+                return smc.Clips[8];
+            }
+        }
+        else if (clipName == AudioClips.Button)
+        {
+            smc = UISource.GetComponent<SoundManagerChannel>();
+
+            if (clipName == AudioClips.Button)
+            {
+                return smc.Clips[0];
+            }
+        }
+        else if (clipName == AudioClips.Rain || clipName == AudioClips.Wind)
+        {
+            smc = AmbianceSource.GetComponent<SoundManagerChannel>();
+
+            if (clipName == AudioClips.Rain)
+            {
+                return smc.Clips[0];
+            }
+            else if (clipName == AudioClips.Wind)
+            {
+                return smc.Clips[1];
+            }
+        }
+
+
+        return null;
     }
 
     /* DEBUGGING
