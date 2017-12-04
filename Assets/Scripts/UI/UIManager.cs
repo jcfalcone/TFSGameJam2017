@@ -19,6 +19,16 @@ public class UIManager : MonoBehaviour
     private GameObject _btnSure;
     private GameObject _btnNevermind;
 
+
+    [SerializeField]
+    Animator cameraAnimator;
+
+    [SerializeField]
+    CanvasGroup mainMenuGrp;
+
+    [SerializeField]
+    CanvasGroup creditGrp;
+
     [SerializeField]
     private string _startScene;
 
@@ -114,12 +124,57 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void Credits()
+    {
+        this.cameraAnimator.SetBool("Credits", true);
+        StartCoroutine(ShowCredits());
+    }
+
+    public void MainMenu()
+    {
+        this.cameraAnimator.SetBool("Credits", false);
+        StartCoroutine(HideCredits());
+    }
+
     public void QuitGame()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
+    }
+
+    IEnumerator ShowCredits()
+    {
+        this.creditGrp.gameObject.SetActive(true);
+
+        while (this.mainMenuGrp.alpha > 0)
+        {
+            this.mainMenuGrp.alpha -= Time.deltaTime;
+            this.creditGrp.alpha += Time.deltaTime;
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        this.mainMenuGrp.alpha = 0;
+        this.creditGrp.alpha = 1;
+    }
+
+    IEnumerator HideCredits()
+    {
+
+        while (this.creditGrp.alpha > 0)
+        {
+            this.mainMenuGrp.alpha += Time.deltaTime;
+            this.creditGrp.alpha -= Time.deltaTime;
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        this.mainMenuGrp.alpha = 1;
+        this.creditGrp.alpha = 0;
+
+        this.creditGrp.gameObject.SetActive(false);
     }
 }

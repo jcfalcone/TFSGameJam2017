@@ -6,6 +6,7 @@ public class Portal : MonoBehaviour
     [SerializeField] GameObject portal;
     [SerializeField] BoxCollider portalCollider;
     [SerializeField] string nextLevelName;
+    [SerializeField] LevelManager levelManager;
 
     public void ActivatePortal()
     {
@@ -17,7 +18,7 @@ public class Portal : MonoBehaviour
     {
         if (c.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(SceneFader.instance.FadeAndLoadScene(SceneFader.FadeDirection.In, nextLevelName, FindObjectOfType<LevelManager>().transitionCanvas));
+            StartCoroutine(SceneFader.instance.FadeAndLoadScene(SceneFader.FadeDirection.In, nextLevelName, this.levelManager.transitionCanvas));
         }
     }
 }

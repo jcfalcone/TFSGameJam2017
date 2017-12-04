@@ -39,7 +39,17 @@ public class SceneFader : Singleton<SceneFader>
     public IEnumerator FadeAndLoadScene(FadeDirection fadeDirection, string sceneToLoad, Image transitionCanvas)
     {
         yield return Fade(fadeDirection, transitionCanvas);
-        SceneManager.LoadScene(sceneToLoad);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
+        asyncLoad.allowSceneActivation = false;
+
+        while (asyncLoad.progress <= 0.89f)
+        {
+            yield return null;
+        }
+
+        asyncLoad.allowSceneActivation = true;
+        //SceneManager.LoadSceneAsync(sceneToLoad);
     }
 
     private void SetColorImage(ref float alpha, FadeDirection fadeDirection, Image transitionCanvas)

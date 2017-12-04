@@ -20,9 +20,12 @@ public class LevelManager : MonoBehaviour
     void Awake()
     {
         if (instance == null)
+        {
+            Debug.Log("Pt1");
             instance = this;
-        else if (instance != this)
-            Destroy(gameObject);
+        }
+       // else if (instance != this)
+            //Destroy(gameObject);
 
         StartCoroutine(SceneFader.instance.Fade(SceneFader.FadeDirection.Out, transitionCanvas));
     }
@@ -71,7 +74,7 @@ public class LevelManager : MonoBehaviour
         if (this.pumpkins == 0)
         {
             portal.ActivatePortal();
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

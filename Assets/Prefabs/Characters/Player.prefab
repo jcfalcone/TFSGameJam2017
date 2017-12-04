@@ -2719,7 +2719,7 @@ MonoBehaviour:
       lanternRender: {fileID: 23091232085030576}
       isMovable: 1
       staminaRecoverRate: 0
-      staminaBurnRate: 80
+      staminaBurnRate: 30
     - speed: 0
       model: {fileID: 1370728041608812}
       modelAnimator: {fileID: 95374106388284902}
@@ -2728,7 +2728,7 @@ MonoBehaviour:
       lanternRender: {fileID: 23216158902528926}
       isMovable: 0
       staminaRecoverRate: 0
-      staminaBurnRate: 80
+      staminaBurnRate: 30
     - speed: 0
       model: {fileID: 0}
       modelAnimator: {fileID: 0}

@@ -1608,6 +1608,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e0fa12e179d5f48989c66322cf653a27, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &790854066 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114323601789935904, guid: e0fa12e179d5f48989c66322cf653a27,
+    type: 2}
+  m_PrefabInternal: {fileID: 790854065}
+  m_Script: {fileID: 11500000, guid: cdd32eb31b4477147bbf13d026c11cb2, type: 3}
 --- !u!1 &828348015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3756,7 +3762,7 @@ Prefab:
     - target: {fileID: 114132256432680508, guid: d40c79a12545513448d601dae2830471,
         type: 2}
       propertyPath: nextLevelName
-      value: Level4
+      value: Final
       objectReference: {fileID: 0}
     - target: {fileID: 1424585344771654, guid: d40c79a12545513448d601dae2830471, type: 2}
       propertyPath: m_IsActive
@@ -3814,6 +3820,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114132256432680508, guid: d40c79a12545513448d601dae2830471,
+        type: 2}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 790854066}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d40c79a12545513448d601dae2830471, type: 2}
   m_IsPrefabParent: 0

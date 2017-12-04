@@ -26,7 +26,7 @@ public class Shot : MonoBehaviour
         normal = 1;
         _rb = GetComponent<Rigidbody>();
 
-        _rb.velocity = transform.forward * normal * _speed * Time.deltaTime;
+        _rb.velocity = transform.forward * normal * _speed;
     }
 
     void Update()
