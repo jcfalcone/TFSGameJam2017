@@ -5,7 +5,7 @@ using UnityEngine;
 public class Shot : MonoBehaviour
 {
     [SerializeField] float _lifetime;
-    [SerializeField] [Range(100, 500)] float _speed;
+    [SerializeField] [Range(0, 500)] float _speed;
 
     Rigidbody _rb;
 
@@ -65,22 +65,24 @@ public class Shot : MonoBehaviour
     void Ricochet90Degrees()
     {
         Vector3 ricochet = Vector3.zero;
-
+        
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
         Physics.Raycast(ray, out hit, Time.deltaTime * _speed + 1);
-
+        
         Vector3 localForward = transform.worldToLocalMatrix.MultiplyVector(transform.forward);
         ricochet = localForward.normalized + hit.normal;
 
         // Debug.DrawRay(transform.position, transform.rotation.eulerAngles + new Vector3(90, 0, 0), Color.green, _lifetime);
 
-        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, ricochet, _rotationSpeed, 0)); transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, ricochet, _rotationSpeed, 0));
+        transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, ricochet, _rotationSpeed, 0));
     }
 
     void Ricochet180Degrees()
     {
-        normal *= -1;
-        _rb.velocity = transform.forward * normal * _speed * Time.deltaTime;
+        transform.rotation = Quaternion.LookRotation(-transform.forward);
+
+       // normal *= -1;
+       _rb.velocity = transform.forward * normal * _speed;
     }
 }

@@ -206,8 +206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48579728bba7c4b259e6497dc16d73a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifetime: 15
-  _speed: 250
+  _lifetime: 10
+  _speed: 10
   _rotationSpeed: 90
   _damage: 1
   _toleranceDistanceForIdle: 0.02
