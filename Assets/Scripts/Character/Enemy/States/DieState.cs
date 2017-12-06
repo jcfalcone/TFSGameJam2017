@@ -24,15 +24,31 @@ public class DieState : EnemyStateTemplate
         this.timeTotal = 0;
 
         this.spawnList = this.parent.GetSpawnpoint();
-
-        this.parent.transform.position = this.spawnList[this.currSpawnpoint].transform.position;
         this.audio = this.parent.GetAudioSource();
         audio.clip = SoundManager.instance.GetClip(SoundManager.AudioClips.GrimLaugh);
         audio.Play();
+
+        this.parent.deathParticle.Play();
+        this.modelAnimator.SetBool("Death", true);
+    }
+
+    public override void End()
+    {
+        base.End();
+
+        this.parent.TailParticle.Play();
+        this.parent.deathParticle.Stop();
+        this.modelAnimator.SetBool("Death", false);
+
     }
 
     override public void Tick()
     {
+        if (!this.parent.deathIsOver)
+        {
+            return;
+        }
+
         this.timeTotal += Time.deltaTime;
     }
 
@@ -44,6 +60,7 @@ public class DieState : EnemyStateTemplate
     {
         if (this.timeTotal > this.timeInState)
         {
+            this.parent.transform.position = this.spawnList[this.currSpawnpoint].transform.position;
             this.parent.Init();
             this.SetCurrSpawnpoint(this.currSpawnpoint + 1);
             return StatesAI.Idle;

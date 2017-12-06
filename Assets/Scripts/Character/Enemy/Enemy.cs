@@ -38,6 +38,9 @@ public class Enemy : BaseCharacter
     [SerializeField]
     AudioSource audio;
 
+    [SerializeField]
+    public bool deathIsOver = false;
+
     [Header("Shoot")]
     [SerializeField]
     private LayerMask hitLayers;
@@ -47,6 +50,12 @@ public class Enemy : BaseCharacter
 
     [SerializeField]
     private GameObject bulletPrefab;
+
+    [SerializeField]
+    public ParticleSystem deathParticle;
+
+    [SerializeField]
+    public ParticleSystem TailParticle;
 
     [Header("State Manager")]
     [SerializeField]
@@ -87,7 +96,7 @@ public class Enemy : BaseCharacter
 
     public void Init()
     {
-
+        this.deathIsOver = false;
         SetStamina(0);
         SetMaxHealth(MAX_HEALTH);
         SetHealth(MAX_HEALTH);
@@ -143,9 +152,15 @@ public class Enemy : BaseCharacter
         return this.audio;
     }
 
-
     void KillTest()
     {
         this.health = 0;
+    }
+
+    public void DeathAnimationIsOver()
+    {
+        this.deathIsOver = true;
+        this.deathParticle.Stop();
+        this.TailParticle.Stop();
     }
 }
